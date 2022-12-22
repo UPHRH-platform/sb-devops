@@ -16,7 +16,7 @@ credentials:
               # 1. open https://github.com/settings/tokens/new
               # 2. Select repo checkbox
               # 3. Give a proper note, for ex: Sunbird Jenkins
-              password: "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"
+              password: ""
 security:
   scriptApproval:
     approvedSignatures:
