@@ -11,12 +11,12 @@ credentials:
           - usernamePassword:
               scope: GLOBAL
               id: github-cred
-              username: "${GH_USERNAME}"
+              username: "tsprasath"
               # This is the api token for GH private repo access.
               # 1. open https://github.com/settings/tokens/new
               # 2. Select repo checkbox
               # 3. Give a proper note, for ex: Sunbird Jenkins
-              password: "${GH_PASSWORD}"
+              password: "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"
 security:
   scriptApproval:
     approvedSignatures:
@@ -37,15 +37,15 @@ jenkins:
       - key: ANSIBLE_STDOUT_CALLBACK
         value: debug
       - key: hub_org
-        value: "${DOCKER_REGISTRY_URL}"
+        value: "asia.gcr.io/upsmf-368011"
       - key: private_repo_branch
-        value: "${GH_PRIVATE_REPO_BRANCH}"
+        value: "main"
       - key: private_repo_credentials
         value: "github-cred"
       - key: private_repo_url
-        value: "${GH_PRIVATE_REPO_URL}"
+        value: "https://github.com/tsprasath/sunbird-devops.git"
       - key: public_repo_branch
-        value: "${GH_PUBLIC_REPO_BRANCH}"
+        value: "release-5.1.0"
       - key: override_private_branch
         value: "true"
       - key: override_public_branch

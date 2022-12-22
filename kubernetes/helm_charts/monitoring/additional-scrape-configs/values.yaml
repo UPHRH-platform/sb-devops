@@ -21,17 +21,7 @@ fullnameOverride: "sunbird-monitoring"
 #       - 10.20.10.3
 #       - 10.20.10.4
 #   neo4j:
-#     port: 7474
-#     address:
-#       - 10.10.10.1
-#       - 10.10.10.2
-#       - 10.10.10.3
-#       - 10.10.10.4
-services: {}
-
-namespace: "default"
-
-blackboxExporterUrl: blackbox-exporter-prometheus-blackbox-exporter.monitoring.svc.cluster.local
+#     port: 7474GCPxporter.monitoring.svc.cluster.local
 blackboxExporterPort: 9115
 scrapeInterval: 15s
 scrapeTimeout: 10s

@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------------------------------------------ #
 # Mandatorty variables - DO NOT LEAVE ANYTHING BLANK #
 # ------------------------------------------------------------------------------------------------------------ #
-cloud_service_provider: ""       # Your cloud service provider name. Supported values are aws, azure, gcloud
+cloud_service_provider: "gcloud"       # Your cloud service provider name. Supported values are aws, azure, gcloud
 domain_name: ""                  # your domain name like example.com
-dockerhub: "change.docker.url"   # docker hub username or url incase of private registry
+dockerhub: "asia.gcr.io"   # docker hub username or url incase of private registry
 # This ip should be in the kubenetes subnet range. For example, if your kube cluster is running in `10.0.0.0/24, then it can be 10.0.0.5. Make sure this ip is not allocated to any other things.`
 private_ingressgateway_ip: ""     # your private kubernetes load balancer ip
 
@@ -33,20 +33,20 @@ azure_private_storage_account_name: "{{ sunbird_private_storage_account_name }}"
 azure_management_storage_account_name: "{{ sunbird_management_storage_account_name }}"
 azure_artifact_storage_account_name: "{{ sunbird_artifact_storage_account_name }}"
 
-# Define the below if you are using AWS Cloud
-aws_region: "" 
-aws_management_s3_bucket_name: ""
-aws_artifact_s3_bucket_name: ""
-aws_public_s3_bucket_name: ""
-aws_private_s3_bucket_name: ""
+# # Define the below if you are using AWS Cloud
+# aws_region: "" 
+# aws_management_s3_bucket_name: ""
+# aws_artifact_s3_bucket_name: ""
+# aws_public_s3_bucket_name: ""
+# aws_private_s3_bucket_name: ""
 
 # Define the below if you are using Google Cloud
-gcloud_private_bucket_name: ""
-gcloud_public_bucket_name: ""
-gcloud_artifact_bucket_name: ""
-gcloud_management_bucket_name: ""
+gcloud_private_bucket_name: "gs://dev-private"
+gcloud_public_bucket_name: "gs://dev-public"
+gcloud_artifact_bucket_name: "gs://dev-artifactss"
+gcloud_management_bucket_name: "gs://dev-mgmt"
 
-gcloud_private_bucket_projectId: ""
+gcloud_private_bucket_projectId: "upsmf-368011"
 
 # Uncomment the variable based on your cloud provider (as a default we have kept Azure variable uncommented)
 # GCP
@@ -74,8 +74,8 @@ nginx_private_ingress_annotations:
 
 ## Optional
 
-learningservice_ip: "10.0.1.5"             # Load balancer IP or server ip
-keycloak_url: "http://10.0.1.6:8080"       # Keycloak Load balancer IP; eg http://10.10.10.10 or VM IP with port like http://10.10.10.10:8080
+learningservice_ip: "10.0.2.5"             # Load balancer IP or server ip
+keycloak_url: "http://10.0.2.4:8080"       # Keycloak Load balancer IP; eg http://10.10.10.10 or VM IP with port like http://10.10.10.10:8080
 env: dev                  # some name like dev, preprod etc
 proto: https               # http or https, preferably https
 sunbird_default_channel: sunbird                # default sunbird channel name
@@ -291,7 +291,7 @@ kong_consumers:
 # https://wtools.io/generate-htpasswd-online
 # admin:{{ grafana_admin_password }}
 # eg: grafana_nginx_private_htpasswd: admin:$apr1$mf3whl$79CIvrwS7B2EZsEhKhH8w0
-grafana_nginx_private_htpasswd: ""
+grafana_nginx_private_htpasswd: "admin:$apr1$t9vwa254$E/PIXBTu52xsYHcuWK.yD1"
 # This is the header with which grafana will authorize the admin user.
 # Make sure this is a random text.
 # Ref: https://grafana.com/docs/grafana/latest/auth/auth-proxy/
