@@ -88,7 +88,7 @@
                         if(sessionTenant){
                             var imgSrc = "${url.resourcesPath}/img/tenants/"+sessionTenant+".png";
                         }else{
-                            var imgSrc = "${url.resourcesPath}/img/logo.png";
+                            var imgSrc = "${url.resourcesPath}/img/uphrh.png";
                         }
 
                         var logoImg =  document.querySelector(".ui.header img");
@@ -102,7 +102,7 @@
                                 logoImg.setAttribute('alt',logoname);
                             }
                             logoImg.src = imgSrc;
-                            logoImg.addEventListener("error", ()=>{ logoImg.onerror=null;logoImg.src='${url.resourcesPath}/img/logo.png'});
+                            logoImg.addEventListener("error", ()=>{ logoImg.onerror=null;logoImg.src='${url.resourcesPath}/img/uphrh.png'});
                         }
 
                     </script>
