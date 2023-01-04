@@ -1,35 +1,35 @@
 [all:vars]
 # Replace the value deployer to your server login user name, for example ubuntu
-ansible_ssh_user=deployer
+ansible_ssh_user=ubuntu
 ansible_ssh_private_key_file=/var/lib/jenkins/secrets/deployer_ssh_key
 
 ######################## KP ########################
 [learning1]
-10.0.1.5
+10.0.2.5
 
 [learningall:children]
 learning1
 
 [redis1]
-10.0.1.5
+10.0.2.5
 
 [redisall:children]
 redis1
 
 [dial1]
-18.3.1.5
+10.0.1.5
 
 [dial:children]
 dial1
 
 [dp-redis]
-10.0.1.5
+10.0.2.5
 
 [lms-redis]
-10.0.1.5
+10.0.2.5
 
 [learning-neo4j-node1]
-10.0.1.8
+10.0.2.3
 
 # Enable following host, if you're have neo4j cluster and an arbiter for election
 # [arbiter]
@@ -39,47 +39,47 @@ dial1
 learning-neo4j-node1
 
 [cassandra-node-1]
-10.0.1.8
+10.0.2.3
 
 [cassandra:children]
 cassandra-node-1
 
 [dp-cassandra]
-10.0.1.8
+10.0.2.3
 
 [core-cassandra]
-10.0.1.8
+10.0.2.3
 
 [core-es-1]
-10.0.1.8    # This should be elasticsearch master IP of Core
+10.0.2.3    # This should be elasticsearch master IP of Core
 
 [core-es:children]
 core-es-1
 
 [log-es-1]
-10.0.1.9
+10.0.2.7
 
 [log-es:children]
 log-es-1
 
 [composite-search-cluster]
-10.1.4.5
+10.0.2.3
 
 [yarn-master]
-10.0.1.7
+10.0.2.6
 
 [yarn-slave]
-10.0.1.7     #yarn master is also a yarn slave so we run workloads
+10.0.2.6     #yarn master is also a yarn slave so we run workloads
 
 [yarn:children]
 yarn-master
 yarn-slave
 
 [processing-cluster-kafka]
-10.0.1.5
+10.0.2.5
 
 [processing-cluster-zookeepers]
-10.0.1.5
+10.0.2.5
 
 [zookeeper:children]
 processing-cluster-zookeepers
