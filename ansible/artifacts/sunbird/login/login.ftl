@@ -81,7 +81,6 @@
                     </div>
                   </#if>
                     <div id="selfSingUp" class="hide">
-                        <p class="or my-16 textCenter">OR</p>
                         <div class="field">
                             <#if realm.password && social.providers??>
                                 <!--div id="kc-social-providers">
