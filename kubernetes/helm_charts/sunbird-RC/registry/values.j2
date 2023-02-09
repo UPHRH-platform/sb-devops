@@ -90,7 +90,7 @@ initcontainer_resources:
     memory: "{{ registry_initcontainer_mem_limit | default('100Mi') }}"
 
 serviceMonitor:
-  enabled: true
+  enabled: false
   labels: # labels with which the prometheus choose the serviceMonitor
     app: prometheus-operator
     release: prometheus-operator
