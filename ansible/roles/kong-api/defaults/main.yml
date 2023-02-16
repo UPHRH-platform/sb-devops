@@ -10040,6 +10040,9 @@ kong_apis:
       config.limit_by: credential
     - name: request-size-limiting
       config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: true
+    config.enabled: true      
 
   - name: courseUserUnEnrolment
     uris: "{{ course_service_prefix }}/v1/admin/unenrol"
@@ -10058,3 +10061,6 @@ kong_apis:
       config.limit_by: credential
     - name: request-size-limiting
       config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+    config.required: true
+    config.enabled: true
