@@ -10096,7 +10096,7 @@ kong_apis:
       config.allowed_payload_size: "{{ small_request_size_limit }}"
   
 - name: adminlistCourseEnrollments
-  uris: "{{ course_service_prefix }}/v2/user/enrollment/list"
+  uris: "{{ course_service_prefix }}/v2/user/courses/admin/list"
   upstream_url: "{{ lms_service_url }}/v2/user/courses/admin/list"
   strip_uri: true
   plugins:
@@ -10117,7 +10117,7 @@ kong_apis:
     config.enabled: false
 
 - name: privateadminListCourseEnrollments
-  uris: "{{ course_service_prefix }}/private/v2/user/enrollment/list"
+  uris: "{{ course_service_prefix }}/private/v2/user/courses/admin/list"
   upstream_url: "{{ lms_service_url }}/private/v2/user/courses/admin/list"
   strip_uri: true
   plugins:
