@@ -262,6 +262,7 @@ kong_apis:
   plugins:
   - name: cors
   - "{{ statsd_pulgin }}"
+  - name: rate-limiting
     config.policy: local
     config.hour: "{{ medium_rate_limit_per_hour }}"
     config.limit_by: ip
@@ -271,7 +272,6 @@ kong_apis:
     config.required: false
     config.enabled: false
 
-  - name: rate-limiting
 - name: assignRole
   uris: "{{ user_service_prefix }}/v1/role/assign"
   upstream_url: "{{ learning_service_url }}/v1/user/assign/role"
@@ -10046,18 +10046,18 @@ kong_apis:
   upstream_url: "{{ lms_service_url }}/v1/course/admin/bulk/enroll"
   strip_uri: true
   plugins:
-    - name: jwt
-    - name: cors
-    - "{{ statsd_pulgin }}"
-    - name: acl
-      config.whitelist:
-        - 'courseAccess'
-    - name: rate-limiting
-      config.policy: local
-      config.hour: "{{ medium_rate_limit_per_hour }}"
-      config.limit_by: credential
-    - name: request-size-limiting
-      config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+      - 'courseAccess'
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
 
 - name: courseUserUnEnrolment
   uris: "{{ course_service_prefix }}/v1/admin/unenrol"
@@ -10100,18 +10100,18 @@ kong_apis:
   upstream_url: "{{ lms_service_url }}/v1/course/admin/course/eval"
   strip_uri: true
   plugins:
-    - name: jwt
-    - name: cors
-    - "{{ statsd_pulgin }}"
-    - name: acl
-      config.whitelist:
-        - 'courseAccess'
-    - name: rate-limiting
-      config.policy: local
-      config.hour: "{{ medium_rate_limit_per_hour }}"
-      config.limit_by: credential
-    - name: request-size-limiting
-      config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+      - 'courseAccess'
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
 
 - name: adminlistCourseEnrollments
   uris: "{{ course_service_prefix }}/v2/user/courses/admin/list"
