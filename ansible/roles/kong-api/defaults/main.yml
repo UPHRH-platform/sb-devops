@@ -355,7 +355,70 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
-
+    
+- name: adminEvaluationList
+  uris: "{{ course_service_prefix }}/v2/user/courses/admin/evaluationList"
+  upstream_url: "{{ lms_service_url }}/v2/user/courses/admin/evaluationList"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - courseSuperAdmin
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+    
+- name: adminIssueCert
+  uris: "{{ course_service_prefix }}/v1/course/batch/cert/issue"
+  upstream_url: "{{ lms_service_url }}/v1/course/batch/cert/issue"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - courseSuperAdmin
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+    
+- name: adminNotIssueCert
+  uris: "{{ course_service_prefix }}/v1/course/admin/course/notissuecertificate"
+  upstream_url: "{{ lms_service_url }}/v1/course/admin/course/notissuecertificate"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - courseSuperAdmin
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+    
 - name: blockUser
   uris: "{{ user_service_prefix }}/v1/block"
   upstream_url: "{{ learning_service_url }}/v1/user/block"
