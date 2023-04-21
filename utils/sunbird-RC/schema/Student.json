@@ -314,7 +314,7 @@
         "DeletedOn": {
             "type": "datetime",
             "description": ""
-        },
+        }
       }
     }
   },
