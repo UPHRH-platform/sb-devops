@@ -19,23 +19,302 @@
 
       ],
       "properties": {
-        "identityDetails": {
-          "$ref": "Common.json/#/definitions/IdentityDetails"
-        },
-        "contactDetails": {
-          "$ref": "Common.json/#/definitions/ContactDetails"
-        },
-        "educationDetails": {
-          "type": "array",
-          "items": {
-            "$ref": "Common.json/#/definitions/EducationType"
-          },
-          "title": "Education Details"
-        },
-        "guardianDetails": {
-          "$ref": "Common.json/#/definitions/GuardianDetails",
-          "title": "Guardian Details"
-        }
+       "StudentProfileKey": {
+            "type": "int",
+            "description": ""
+        },
+        "CenterKey": {
+            "type": "smallint",
+            "description": ""
+        },
+        "CourseKey": {
+            "type": "smallint",
+            "description": ""
+        },
+        "AdmissionYear": {
+            "type": "varchar",
+            "description": ""
+        },
+        "StudentName": {
+            "type": "varchar",
+            "description": ""
+        },
+        "StudentName_SurName": {
+            "type": "varchar",
+            "description": ""
+        },
+        "StudentFullName": {
+            "type": "varchar",
+            "description": ""
+        },
+        "DateOfBirth": {
+            "type": "datetime",
+            "description": ""
+        },
+        "FatherName": {
+            "type": "varchar",
+            "description": ""
+        },
+        "FatherTitle": {
+            "type": "varchar",
+            "description": ""
+        },
+        "FatherFullName": {
+            "type": "varchar",
+            "description": ""
+        },
+        "MotherTitle": {
+            "type": "varchar",
+            "description": ""
+        },
+        "MotherName": {
+            "type": "varchar",
+            "description": ""
+        },
+        "MotherFullName": {
+            "type": "varchar",
+            "description": ""
+        },
+        "ControlNo": {
+            "type": "varchar",
+            "description": ""
+        },
+        "EnrollmentNo": {
+            "type": "varchar",
+            "description": ""
+        },
+        "RollNo": {
+            "type": "varchar",
+            "description": ""
+        },
+        "AdmissionDate": {
+            "type": "datetime",
+            "description": ""
+        },
+        "Title": {
+            "type": "varchar",
+            "description": ""
+        },
+        "[Cast]": {
+            "type": "varchar",
+            "description": ""
+        },
+        "IsFreedomFighter": {
+            "type": "bit",
+            "description": ""
+        },
+        "IsHandicap": {
+            "type": "bit",
+            "description": ""
+        },
+        "Gender": {
+            "type": "varchar",
+            "description": ""
+        },
+         "ModifyCount": {
+            "type": "smallint",
+            "description": ""
+        },
+         "ExamSessionKey": {
+            "type": "int",
+            "description": ""
+        },
+         "Inter_Subject": {
+            "type": "varchar",
+            "description": ""
+        },
+         "Inter_Physics": {
+            "type": "bit",
+            "description": ""
+        },
+         "Inter_Chemistry": {
+            "type": "bit",
+            "description": ""
+        },
+         "Inter_Biology": {
+            "type": "bit",
+            "description": ""
+        },
+        "Inter_Math": {
+            "type": "bit",
+            "description": ""
+        },
+         "Inter_Art": {
+            "type": "bit",
+            "description": ""
+        },
+         "Inter_Commerce": {
+            "type": "bit",
+            "description": ""
+        },
+        "Inter_Other": {
+            "type": "bit",
+            "description": ""
+        },
+        "Inter_Percent": {
+            "type": "float",
+            "description": ""
+        },
+        "Exam_BoardKey": {
+            "type": "smallint",
+            "description": ""
+        },
+        "IntermediateSubjects": {
+            "type": "varchar",
+            "description": ""
+        },
+        "IntermediateEnglishSubject": {
+            "type": "varchar",
+            "description": ""
+        },
+        "HighSchool_RollNo": {
+            "type": "varchar",
+            "description": ""
+        },
+        "HighSchool_PassingYear": {
+            "type": "varchar",
+            "description": ""
+        },
+        "Intermediate_RollNo": {
+            "type": "varchar",
+            "description": ""
+        },
+        "Intermediate_PassingYear": {
+            "type": "varchar",
+            "description": ""
+        },
+        "ContactNo": {
+            "type": "varchar",
+            "description": ""
+        },
+        "EmailId": {
+            "type": "varchar",
+            "description": ""
+        },
+        "AadhaarNo": {
+            "type": "varchar",
+            "description": ""
+        },
+        "Address": {
+            "type": "varchar",
+            "description": ""
+        },
+        "District": {
+            "type": "varchar",
+            "description": ""
+        },
+        "PinCode": {
+            "type": "varchar",
+            "description": ""
+        },
+        "StateKey": {
+            "type": "smallint",
+            "description": ""
+        },
+        "CountryKey": {
+            "type": "smallint",
+            "description": ""
+        },
+        "State": {
+            "type": "varchar",
+            "description": ""
+        },
+        "Photo_Sign_Path": {
+            "type": "varchar",
+            "description": ""
+        },
+        "PhotoPath": {
+            "type": "varchar",
+            "description": ""
+        },
+        "SignaturePath": {
+            "type": "varchar",
+            "description": ""
+        },
+        "FinancialYear": {
+            "type": "varchar",
+            "description": ""
+        },
+        "StudentProfileStatus": {
+            "type": "smallint",
+            "description": ""
+        },
+        "FormVerifiedBy": {
+            "type": "int",
+            "description": ""
+        },
+        "FormVerifiedOn": {
+            "type": "datetime",
+            "description": ""
+        },
+        "FormVerifierComment": {
+            "type": "varchar",
+            "description": ""
+        },
+        "CancelCauseId": {
+            "type": "smallint",
+            "description": ""
+        },
+        "CancelDetails": {
+            "type": "varchar",
+            "description": ""
+        },
+        "DiplomaDate": {
+            "type": "datetime",
+            "description": ""
+        },
+        "DiplomaNo": {
+            "type": "int",
+            "description": ""
+        },
+        "DiplomaDeclaredBy": {
+            "type": "int",
+            "description": ""
+        },
+        "DiplomaDeclaredOn": {
+            "type": "datetime",
+            "description": ""
+        },
+        "RegnReceiptNo": {
+            "type": "varchar",
+            "description": ""
+        },
+        "RegnReceiptDate": {
+            "type": "datetime",
+            "description": ""
+        },
+        "CreatedBy": {
+            "type": "int",
+            "description": ""
+        },
+        "CreatedOn": {
+            "type": "datetime",
+            "description": ""
+        },
+        "LastModifiedBy": {
+            "type": "int",
+            "description": ""
+        },
+        "LastModifiedOn": {
+            "type": "datetime",
+            "description": ""
+        },
+        "IsActive": {
+            "type": "bit",
+            "description": ""
+        },
+        "BarCode": {
+            "type": "varchar",
+            "description": ""
+        },
+        "DeletedBy": {
+            "type": "int",
+            "description": ""
+        },
+        "DeletedOn": {
+            "type": "datetime",
+            "description": ""
+        },
       }
     }
   },
@@ -48,59 +327,35 @@
       "systemFields: Optional; list of fields names used for system standard information like created, updated timestamps and userid"],
 
     "privateFields": [
-      "$.identityDetails.dob",
-      "$.identityDetails.identityType",
-      "$.identityDetails.identityValue",
-      "$.contactDetails.email",
-      "$.contactDetails.mobile",
-      "$.contactDetails.address.plot",
-      "$.contactDetails.address.street",
-      "$.contactDetails.address.landmark",
-      "$.contactDetails.address.locality"
+      
+    ],
+    "inviteRoles": [
+      "anonymous"
     ],
     "signedFields": [],
-    "indexFields": ["studentName"],
-    "uniqueIndexFields": ["identityValue"],
+    "indexFields": ["StudentName"],
+    "uniqueIndexFields": ["StudentProfileKey"],
     "systemFields": [
-      "_osCreatedAt",
-      "_osUpdatedAt",
-      "_osCreatedBy",
-      "_osUpdatedBy",
-      "_osAttestedData",
-      "_osClaimId",
-      "_osState"
+      "osCreatedAt",
+      "osUpdatedAt",
+      "osCreatedBy",
+      "osUpdatedBy",
+      "osAttestedData",
+      "osClaimId",
+      "osState"
     ],
     "attestationAttributes": [
-      "educationDetails",
-      "nationalIdentifier"
+      
     ],
     "attestationPolicies": [
-      {
-        "name": "schoolId",
-        "additionalInput": {
-          "enrollmentNumber": {"type": "string"}
-        },
-        "attestationProperties": {
-          "name": "$.identityDetails.fullName",
-          "institute": "$.educationDetails[0].institute"
-        },
-        "paths": ["$.educationDetails[?(@.osid == 'PROPERTY_ID')]['institute', 'program', 'graduationYear', 'marks']", "$.identityDetails['fullName']"],
-        "type": "MANUAL",
-        "attestorEntity": "Teacher",
-        "conditions": "(ATTESTOR#$.experience.[*].institute#.contains(REQUESTER#$.institute#))",
-        "attestorPlugin": "did:internal:ClaimPluginActor?entity=Teacher",
-        "credentialTemplate": {}
-      }
+     
     ],
-    "inviteRoles":["anonymous"],
+
     "enableLogin": true,
     "ownershipAttributes": [
       {
-        "email":"/ContactDetails/email",
-        "mobile":"/ContactDetails/mobile",
-        "userId":"/ContactDetails/mobile"
+        
       }
     ]
-
   }
 }
