@@ -9,332 +9,333 @@
   "required": [
     "Student"
   ],
-  "title":"Student",
+  "title": "Student",
   "definitions": {
     "Student": {
       "$id": "#/properties/Student",
       "type": "object",
       "title": "The Student Schema",
-      "required": [
-
-      ],
+      "required": [],
       "properties": {
-       "StudentProfileKey": {
-            "type": "int",
-            "description": ""
-        },
-        "CenterKey": {
-            "type": "smallint",
-            "description": ""
-        },
-        "CourseKey": {
-            "type": "smallint",
-            "description": ""
-        },
-        "AdmissionYear": {
-            "type": "varchar",
-            "description": ""
-        },
-        "StudentName": {
-            "type": "varchar",
-            "description": ""
-        },
-        "StudentName_SurName": {
-            "type": "varchar",
-            "description": ""
-        },
-        "StudentFullName": {
-            "type": "varchar",
-            "description": ""
-        },
-        "DateOfBirth": {
-            "type": "datetime",
-            "description": ""
-        },
-        "FatherName": {
-            "type": "varchar",
-            "description": ""
-        },
-        "FatherTitle": {
-            "type": "varchar",
-            "description": ""
-        },
-        "FatherFullName": {
-            "type": "varchar",
-            "description": ""
-        },
-        "MotherTitle": {
-            "type": "varchar",
-            "description": ""
-        },
-        "MotherName": {
-            "type": "varchar",
-            "description": ""
-        },
-        "MotherFullName": {
-            "type": "varchar",
-            "description": ""
-        },
-        "ControlNo": {
-            "type": "varchar",
-            "description": ""
-        },
-        "EnrollmentNo": {
-            "type": "varchar",
-            "description": ""
-        },
-        "RollNo": {
-            "type": "varchar",
-            "description": ""
-        },
-        "AdmissionDate": {
-            "type": "datetime",
-            "description": ""
-        },
-        "Title": {
-            "type": "varchar",
-            "description": ""
-        },
-        "[Cast]": {
-            "type": "varchar",
-            "description": ""
-        },
-        "IsFreedomFighter": {
-            "type": "bit",
-            "description": ""
-        },
-        "IsHandicap": {
-            "type": "bit",
-            "description": ""
-        },
-        "Gender": {
-            "type": "varchar",
-            "description": ""
-        },
-         "ModifyCount": {
-            "type": "smallint",
-            "description": ""
-        },
-         "ExamSessionKey": {
-            "type": "int",
-            "description": ""
-        },
-         "Inter_Subject": {
-            "type": "varchar",
-            "description": ""
-        },
-         "Inter_Physics": {
-            "type": "bit",
-            "description": ""
-        },
-         "Inter_Chemistry": {
-            "type": "bit",
-            "description": ""
-        },
-         "Inter_Biology": {
-            "type": "bit",
-            "description": ""
-        },
-        "Inter_Math": {
-            "type": "bit",
-            "description": ""
-        },
-         "Inter_Art": {
-            "type": "bit",
-            "description": ""
-        },
-         "Inter_Commerce": {
-            "type": "bit",
-            "description": ""
-        },
-        "Inter_Other": {
-            "type": "bit",
-            "description": ""
-        },
-        "Inter_Percent": {
-            "type": "float",
-            "description": ""
-        },
-        "Exam_BoardKey": {
-            "type": "smallint",
-            "description": ""
-        },
-        "IntermediateSubjects": {
-            "type": "varchar",
-            "description": ""
-        },
-        "IntermediateEnglishSubject": {
-            "type": "varchar",
-            "description": ""
-        },
-        "HighSchool_RollNo": {
-            "type": "varchar",
-            "description": ""
-        },
-        "HighSchool_PassingYear": {
-            "type": "varchar",
-            "description": ""
-        },
-        "Intermediate_RollNo": {
-            "type": "varchar",
-            "description": ""
-        },
-        "Intermediate_PassingYear": {
-            "type": "varchar",
-            "description": ""
-        },
-        "ContactNo": {
-            "type": "varchar",
-            "description": ""
-        },
-        "EmailId": {
-            "type": "varchar",
-            "description": ""
-        },
-        "AadhaarNo": {
-            "type": "varchar",
-            "description": ""
-        },
-        "Address": {
-            "type": "varchar",
-            "description": ""
-        },
-        "District": {
-            "type": "varchar",
-            "description": ""
-        },
-        "PinCode": {
-            "type": "varchar",
-            "description": ""
-        },
-        "StateKey": {
-            "type": "smallint",
-            "description": ""
-        },
-        "CountryKey": {
-            "type": "smallint",
-            "description": ""
-        },
-        "State": {
-            "type": "varchar",
-            "description": ""
-        },
-        "Photo_Sign_Path": {
-            "type": "varchar",
-            "description": ""
-        },
-        "PhotoPath": {
-            "type": "varchar",
-            "description": ""
-        },
-        "SignaturePath": {
-            "type": "varchar",
-            "description": ""
-        },
-        "FinancialYear": {
-            "type": "varchar",
-            "description": ""
-        },
-        "StudentProfileStatus": {
-            "type": "smallint",
-            "description": ""
-        },
-        "FormVerifiedBy": {
-            "type": "int",
-            "description": ""
-        },
-        "FormVerifiedOn": {
-            "type": "datetime",
-            "description": ""
-        },
-        "FormVerifierComment": {
-            "type": "varchar",
-            "description": ""
-        },
-        "CancelCauseId": {
-            "type": "smallint",
-            "description": ""
-        },
-        "CancelDetails": {
-            "type": "varchar",
-            "description": ""
-        },
-        "DiplomaDate": {
-            "type": "datetime",
-            "description": ""
-        },
-        "DiplomaNo": {
-            "type": "int",
-            "description": ""
-        },
-        "DiplomaDeclaredBy": {
-            "type": "int",
-            "description": ""
-        },
-        "DiplomaDeclaredOn": {
-            "type": "datetime",
-            "description": ""
-        },
-        "RegnReceiptNo": {
-            "type": "varchar",
-            "description": ""
-        },
-        "RegnReceiptDate": {
-            "type": "datetime",
-            "description": ""
-        },
-        "CreatedBy": {
-            "type": "int",
-            "description": ""
-        },
-        "CreatedOn": {
-            "type": "datetime",
-            "description": ""
-        },
-        "LastModifiedBy": {
-            "type": "int",
-            "description": ""
-        },
-        "LastModifiedOn": {
-            "type": "datetime",
-            "description": ""
-        },
-        "IsActive": {
-            "type": "bit",
-            "description": ""
-        },
-        "BarCode": {
-            "type": "varchar",
-            "description": ""
-        },
-        "DeletedBy": {
-            "type": "int",
-            "description": ""
-        },
-        "DeletedOn": {
-            "type": "datetime",
-            "description": ""
-        }
+        "StudentProfileKey": {
+          "type": "int",
+          "description": ""
+        },
+        "CenterKey": {
+          "type": "smallint",
+          "description": ""
+        },
+        "CourseKey": {
+          "type": "smallint",
+          "description": ""
+        },
+        "AdmissionYear": {
+          "type": "varchar",
+          "description": ""
+        },
+        "StudentName": {
+          "type": "varchar",
+          "description": ""
+        },
+        "StudentName_SurName": {
+          "type": "varchar",
+          "description": ""
+        },
+        "StudentFullName": {
+          "type": "varchar",
+          "description": ""
+        },
+        "DateOfBirth": {
+          "type": "datetime",
+          "description": ""
+        },
+        "FatherName": {
+          "type": "varchar",
+          "description": ""
+        },
+        "FatherTitle": {
+          "type": "varchar",
+          "description": ""
+        },
+        "FatherFullName": {
+          "type": "varchar",
+          "description": ""
+        },
+        "MotherTitle": {
+          "type": "varchar",
+          "description": ""
+        },
+        "MotherName": {
+          "type": "varchar",
+          "description": ""
+        },
+        "MotherFullName": {
+          "type": "varchar",
+          "description": ""
+        },
+        "ControlNo": {
+          "type": "varchar",
+          "description": ""
+        },
+        "EnrollmentNo": {
+          "type": "varchar",
+          "description": ""
+        },
+        "RollNo": {
+          "type": "varchar",
+          "description": ""
+        },
+        "AdmissionDate": {
+          "type": "datetime",
+          "description": ""
+        },
+        "Title": {
+          "type": "varchar",
+          "description": ""
+        },
+        "[Cast]": {
+          "type": "varchar",
+          "description": ""
+        },
+        "IsFreedomFighter": {
+          "type": "bit",
+          "description": ""
+        },
+        "IsHandicap": {
+          "type": "bit",
+          "description": ""
+        },
+        "Gender": {
+          "type": "varchar",
+          "description": ""
+        },
+        "ModifyCount": {
+          "type": "smallint",
+          "description": ""
+        },
+        "ExamSessionKey": {
+          "type": "int",
+          "description": ""
+        },
+        "Inter_Subject": {
+          "type": "varchar",
+          "description": ""
+        },
+        "Inter_Physics": {
+          "type": "bit",
+          "description": ""
+        },
+        "Inter_Chemistry": {
+          "type": "bit",
+          "description": ""
+        },
+        "Inter_Biology": {
+          "type": "bit",
+          "description": ""
+        },
+        "Inter_Math": {
+          "type": "bit",
+          "description": ""
+        },
+        "Inter_Art": {
+          "type": "bit",
+          "description": ""
+        },
+        "Inter_Commerce": {
+          "type": "bit",
+          "description": ""
+        },
+        "Inter_Other": {
+          "type": "bit",
+          "description": ""
+        },
+        "Inter_Percent": {
+          "type": "float",
+          "description": ""
+        },
+        "Exam_BoardKey": {
+          "type": "smallint",
+          "description": ""
+        },
+        "IntermediateSubjects": {
+          "type": "varchar",
+          "description": ""
+        },
+        "IntermediateEnglishSubject": {
+          "type": "varchar",
+          "description": ""
+        },
+        "HighSchool_RollNo": {
+          "type": "varchar",
+          "description": ""
+        },
+        "HighSchool_PassingYear": {
+          "type": "varchar",
+          "description": ""
+        },
+        "Intermediate_RollNo": {
+          "type": "varchar",
+          "description": ""
+        },
+        "Intermediate_PassingYear": {
+          "type": "varchar",
+          "description": ""
+        },
+        "ContactNo": {
+          "type": "varchar",
+          "description": ""
+        },
+        "EmailId": {
+          "type": "varchar",
+          "description": ""
+        },
+        "AadhaarNo": {
+          "type": "varchar",
+          "description": ""
+        },
+        "Address": {
+          "type": "varchar",
+          "description": ""
+        },
+        "District": {
+          "type": "varchar",
+          "description": ""
+        },
+        "PinCode": {
+          "type": "varchar",
+          "description": ""
+        },
+        "StateKey": {
+          "type": "smallint",
+          "description": ""
+        },
+        "CountryKey": {
+          "type": "smallint",
+          "description": ""
+        },
+        "State": {
+          "type": "varchar",
+          "description": ""
+        },
+        "Photo_Sign_Path": {
+          "type": "varchar",
+          "description": ""
+        },
+        "PhotoPath": {
+          "type": "varchar",
+          "description": ""
+        },
+        "SignaturePath": {
+          "type": "varchar",
+          "description": ""
+        },
+        "FinancialYear": {
+          "type": "varchar",
+          "description": ""
+        },
+        "StudentProfileStatus": {
+          "type": "smallint",
+          "description": ""
+        },
+        "FormVerifiedBy": {
+          "type": "int",
+          "description": ""
+        },
+        "FormVerifiedOn": {
+          "type": "datetime",
+          "description": ""
+        },
+        "FormVerifierComment": {
+          "type": "varchar",
+          "description": ""
+        },
+        "CancelCauseId": {
+          "type": "smallint",
+          "description": ""
+        },
+        "CancelDetails": {
+          "type": "varchar",
+          "description": ""
+        },
+        "DiplomaDate": {
+          "type": "datetime",
+          "description": ""
+        },
+        "DiplomaNo": {
+          "type": "int",
+          "description": ""
+        },
+        "DiplomaDeclaredBy": {
+          "type": "int",
+          "description": ""
+        },
+        "DiplomaDeclaredOn": {
+          "type": "datetime",
+          "description": ""
+        },
+        "RegnReceiptNo": {
+          "type": "varchar",
+          "description": ""
+        },
+        "RegnReceiptDate": {
+          "type": "datetime",
+          "description": ""
+        },
+        "CreatedBy": {
+          "type": "int",
+          "description": ""
+        },
+        "CreatedOn": {
+          "type": "datetime",
+          "description": ""
+        },
+        "LastModifiedBy": {
+          "type": "int",
+          "description": ""
+        },
+        "LastModifiedOn": {
+          "type": "datetime",
+          "description": ""
+        },
+        "IsActive": {
+          "type": "bit",
+          "description": ""
+        },
+        "BarCode": {
+          "type": "varchar",
+          "description": ""
+        },
+        "DeletedBy": {
+          "type": "int",
+          "description": ""
+        },
+        "DeletedOn": {
+          "type": "datetime",
+          "description": ""
+        }
       }
     }
   },
   "_osConfig": {
-    "osComment": ["This section contains the OpenSABER specific configuration information",
+    "osComment": [
+      "This section contains the OpenSABER specific configuration information",
       "privateFields: Optional; list of field names to be encrypted and stored in database",
       "signedFields: Optional; list of field names that must be pre-signed",
       "indexFields: Optional; list of field names used for creating index. Enclose within braces to indicate it is a composite index. In this definition, (serialNum, studentCode) is a composite index and studentName is a single column index.",
       "uniqueIndexFields: Optional; list of field names used for creating unique index. Field names must be different from index field name",
-      "systemFields: Optional; list of fields names used for system standard information like created, updated timestamps and userid"],
-
-    "privateFields": [
-      
+      "systemFields: Optional; list of fields names used for system standard information like created, updated timestamps and userid"
     ],
+    "privateFields": [],
     "inviteRoles": [
       "anonymous"
     ],
     "signedFields": [],
-    "indexFields": ["StudentName"],
-    "uniqueIndexFields": ["StudentProfileKey"],
+    "indexFields": [
+      "StudentName"
+    ],
+    "uniqueIndexFields": [
+      "StudentProfileKey"
+    ],
     "systemFields": [
       "osCreatedAt",
       "osUpdatedAt",
@@ -344,18 +345,11 @@
       "osClaimId",
       "osState"
     ],
-    "attestationAttributes": [
-      
-    ],
-    "attestationPolicies": [
-     
-    ],
-
+    "attestationAttributes": [],
+    "attestationPolicies": [],
     "enableLogin": true,
     "ownershipAttributes": [
-      {
-        
-      }
+      {}
     ]
   }
 }
