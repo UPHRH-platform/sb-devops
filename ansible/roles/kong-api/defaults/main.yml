@@ -10280,24 +10280,4 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
-    
-- name: questionSetAssesmentValidity
-  uris: "{{ questionset_prefix }}/v1/assestment/validate"
-  upstream_url: "{{ assessment_service_url }}/questionset/v4/assestment/validate"
-  strip_uri: true
-  plugins:
-  - name: jwt
-  - name: cors
-  - "{{ statsd_pulgin }}"
-  - name: acl
-    config.whitelist:
-    - contentCreate
-  - name: rate-limiting
-    config.policy: local
-    config.hour: "{{ medium_rate_limit_per_hour }}"
-    config.limit_by: credential
-  - name: request-size-limiting
-    config.allowed_payload_size: "{{ medium_request_size_limit }}"
-  - name: opa-checks
-    config.required: false
-    config.enabled: false
+   
