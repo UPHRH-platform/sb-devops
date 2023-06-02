@@ -1,10 +1,9 @@
 @import "./fonts/notosans/notosans.css";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
 body{
     font-family: "Noto Sans";
     position: relative;
     letter-spacing: 0.2px;
-    /* background: #edf4f9; */
+    background: #edf4f9;
 }
 .fullpage-background-image{
     width: 100% !important;
@@ -54,7 +53,7 @@ input{
     border: 1px solid #9B9B9B !important;
 }
 input:focus{
-    border: 1px solid rgba(236,73,51,1) !important;
+    border: 1px solid #024f9d !important;
 }
 .signInWithGoogle{
     position: absolute;
@@ -98,9 +97,6 @@ input:focus{
     text-align: left;
     /*margin-top: auto !important;*/
     margin-bottom: 10px !important;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
 }
 .formMsg{
     font-size: 16px;
@@ -115,14 +111,12 @@ input:focus{
     text-align: center;
 }
 p.subtitle {
-    opacity: 1;
-    color: rgba(0,0,0,1);
-    font-size: 24px;
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: 0px;
+    color: #333333;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 26px;
     text-align: center;
-    margin-bottom: 8px;
 }
 .ui.form .field>label {
     font-size: 14px;
@@ -270,13 +264,9 @@ a{
     color: #024f9d !important;
 }
 .registerLink{
-    opacity: 1;
-    color: rgba(236,73,51,1);
-    font-size: 14px;
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: 0px;
-    text-align: right;
+    color: #024f9d;
+    font-weight: bold;
+    text-decoration: underline;
 }
 .registerLink:hover,
 .registerLink:focus{
@@ -396,9 +386,7 @@ h1, h2, h3, h4, h5,
 }
 
 .sb-btn-primary:hover {
-    background-color: #FFF5F3;
-    border-color: rgba(236,73,51,1);
-    color: rgba(236,73,51,1);
+    background-color: #002e50;
 }
 
 .sb-btn-success {
@@ -465,7 +453,7 @@ h1, h2, h3, h4, h5,
     justify-content: center;
     height: 100%;
     padding: 32px;
-    /* background-image: linear-gradient(180deg, rgba(246, 170, 156, 1) 0%, rgba(253, 227, 222, 1) 100%) !important; */
+    background: #edf4f9;
 }
 .container-wrapper {
     max-width: 328px;
@@ -485,25 +473,6 @@ h1, h2, h3, h4, h5,
 .forgot-password {
     font-size:11px;
     color:#333;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: baseline;
-    font-size: 12px;
-    line-height: 17px;
-    text-align: left;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-}
-.forgot-password p{
-    opacity: 1;
-    color: rgba(0,0,0,1);
-    font-size: 14px;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: 0px;
-    text-align: left;
 }
 .forgot-password:hover {
     color:#024f9d;
@@ -633,9 +602,9 @@ h1, h2, h3, h4, h5,
         background-size: cover;
         background-repeat: no-repeat;
         min-height: 100vh;
-        background: url(../img/bg.png) no-repeat center center fixed;
+        background: url(../img/onboard_bg.svg) no-repeat center center fixed;
         background-size: cover;
-        background-color: #000; 
+
     }
     .fullpage-background-image{
         max-width: 1008px !important;
@@ -669,92 +638,3 @@ h1, h2, h3, h4, h5,
     outline: 1px #fe0000 solid !important;
     border-radius: 5px;
   }
-
-
-  .kc-container-wrapper{
-    /* opacity: 1; */
-    /* background-image: linear-gradient(90deg, rgba(236, 80, 51, 1) 0%, rgba(253, 235, 232, 1) 100%); */
-    }
-    .fullpage-background-image {
-    
-        background: #ffffff;
-        max-width: 661px !important;    width: 100%;    padding: 40px !important;    /* box-shadow: 0 2px 16px 0 rgba(0,0,0,0.2) !important; */    border-radius: 8px !important;    min-height: 480px;		    opacity: 1;
-    }
-    
-    .activeLabelColor{    color: #000000 !important;
-    }
-    
-    .forgetPasswordLink{
-                color: #024f9d;
-                font-size: 12px;
-                line-height: 17px;
-                float: right;
-                color: rgba(236,73,51,1) !important;
-                font-size: 14px;
-                font-weight: 700;
-                font-style: normal;
-                letter-spacing: 0px;
-                text-align: right;
-                display: block !important;
-    }
-    
-    
-    .sb-btn-primary{
-                border-color: rgba(236,73,51,1);
-                background-color: rgba(236,73,51,1);
-                color: white;
-                opacity: 1;
-                color: rgba(255,255,255,1);
-                font-size: 14px;
-                font-weight: 400;
-                font-style: normal;
-                letter-spacing: 0px;
-                text-align: center;
-    }
-    .registerLink {
-        color: rgba(236,73,51,1);
-    }
-header .navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    min-height: 80px;
-    max-height: 80px;
-    min-width: 100%;
-    z-index: 10;
-    background: white;
-    border-bottom: 2px solid white;
-}
-
-header .navigation .logo{
-    margin-left: 20px;
-}
-header .navigation .logo img {
-    width: 291px;
-    height: 48px;
-}
-header .navigation .logo h1{
-    color: #b1d4e0;
-    font-size: 30px;
-    line-height: 38px;
-}
-.info {
-    opacity: 1;
-    color: rgba(0,0,0,0.8);
-    font-family: "NotoSans";
-    font-size: 14px;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: 0px;
-}
-span.required {
-    color: #e55a28;
-    font-size: 14px;
-}
-      
-      
-      
-      
-    
-          

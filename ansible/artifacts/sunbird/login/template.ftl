@@ -45,17 +45,7 @@
         <div id="kc-container-wrapper" class="${properties.kcContainerWrapperClass!}">
 
             <div id="kc-header" class="${properties.kcHeaderClass!}">
-                <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}">
-                    	<header>
-                            <nav class="navigation">
-
-                                <!-- Logo -->
-                                <div class="logo">
-                                    <img onerror="" src="https://uphrh.in/assets/images/sunbird_logo.png" alt="">
-                                </div>
-                            </nav>	
-                        </header>
-                </div>
+                <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}"><#nested "header"></div>
             </div>
 
             <#if realm.internationalizationEnabled>

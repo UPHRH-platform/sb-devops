@@ -8,8 +8,9 @@
     <div class="fullpage-background-image">
     <div class="container-wrapper">
                 <div class="ui header centered mb-8">
+                    <img onerror="" alt="">
+                    <h2 id="signIn" class="signInHead mt-8 mb-8">${msg("loginDiksha")}</h2>
                     <p class="subtitle">Login</p>
-                    <p id="signIn" class="info mt-8 mb-8">${msg("loginDiksha")} <span class="required">*</span></p>
                 </div>
                 <p id="mergeAccountMessage" class="hide mb-0 textCenter">${msg("mergeAccountMessage")}</p>
                 <p id="migrateAccountMessage" class="hide mb-0 textCenter">${msg("migrateAccountMessage")}</p>
@@ -29,14 +30,12 @@
                             <#elseif !realm.registrationEmailAsUsername>${msg("emailOrPhone")}
                             <#else>${msg("email")}
                             </#if>
-                            <span class="required">*</span>
                         </label>
                         <label id="usernameLabelPlaceholder" for="username" class="activeLabelColor hide">
                             <#if !realm.loginWithEmailAllowed>${msg("username")}
                             <#elseif !realm.registrationEmailAsUsername>${msg("placeholderForEmailOrPhone")}
                             <#else>${msg("email")}
                             </#if>
-                            <span class="required">*</span>
                         </label>
                          <#if usernameEditDisabled??>
                          <#-- TODO: need to find alternative for prepopulating username -->
@@ -49,12 +48,10 @@
                         <div>
                             <label id="passwordLabel" for="password" class="">
                                 ${msg("password")}
-                                <span class="required">*</span>
                             </label>
 
                             <label id="passwordLabelPlaceholder" for="password" class="activeLabelColor hide">
                                 ${msg("placeholderForPassword")}
-                                <span class="required">*</span>
                             </label>
                         </div>
                         <input placeholder="${msg('passwordPlaceholder')}" class=" mt-8" id="password" onfocusin="inputBoxFocusIn(this)" onfocusout="inputBoxFocusOut(this)" name="password" type="password" autocomplete="current-password" />
@@ -67,7 +64,7 @@
                     </div>
                     <div class="forgot-password">
                       <#if realm.resetPasswordAllowed>
-                      ${msg("forgotAccount")}
+                        <a id="fgtKeycloakFlow" class="ui right floated forgetPasswordLink hide" tabindex="0" onclick="javascript:storeLocation(); javascript:makeDivUnclickable(); javascript:storeForgotPasswordLocation(event);" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a>
                         <div id="fgtPortalFlow" role="link" class="ui right floated forgetPasswordLink hide" tabindex="0" onclick="javascript:makeDivUnclickable(); javascript:createTelemetryEvent(event); javascript:forgetPassword('/recover/identify/account');">${msg("doForgotPassword")}</div>
                       </#if>
                     </div>
