@@ -123,6 +123,7 @@ uci_admin_prefix: /uci
 notification_service_prefix: /notification
 registry_service_prefix: /rc
 assessment_prefix: /assessment
+learner_prefix: /learner
 
 # Service URLs
 knowledge_mw_service_url: "http://knowledge-mw-service:5000"
@@ -483,7 +484,7 @@ kong_apis:
     config.enabled: false
 
 - name: userFeedCreate
-  uris: "{{ course_service_prefix }}/private/user/feed/v1/create"
+  uris: "{{ learner_prefix }}/private/user/feed/v1/create"
   upstream_url: "{{ learning_service_url }}/private/user/feed/v1/create"
   strip_uri: true
   plugins:
@@ -504,7 +505,7 @@ kong_apis:
     config.enabled: false
 
 - name: notificationv2
-  uris: "{{ course_service_prefix }}/v2/notification"
+  uris: "{{ learner_prefix }}/v2/notification"
   upstream_url: "{{ learning_service_url }}/v2/notification"
   strip_uri: true
   plugins:
