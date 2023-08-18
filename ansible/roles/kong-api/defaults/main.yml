@@ -10328,7 +10328,6 @@ kong_apis:
     config.required: false
     config.enabled: false
 
-
 - name: privateUserICICPayementGateway
   uris: "/payment/generatelink"
   upstream_url: "{{ hasuranodecomponent_service_url }}/payment/generatelink"
