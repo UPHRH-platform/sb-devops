@@ -10333,7 +10333,6 @@ kong_apis:
   upstream_url: "{{ hasuranodecomponent_service_url }}/payment/generatelink"
   strip_uri: true
   plugins:
-  - name: jwt
   - name: cors
   - "{{ statsd_pulgin }}"
   - name: acl
