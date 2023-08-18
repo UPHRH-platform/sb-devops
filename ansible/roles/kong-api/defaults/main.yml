@@ -125,7 +125,7 @@ registry_service_prefix: /rc
 assessment_prefix: /assessment
 learner_prefix: /learner
 usermanagement_prefix: /api/v1/user
-hasuranodecomponent: /
+hasuranodecomponent_prefix: /hasura
 
 
 # Service URLs
@@ -10330,7 +10330,7 @@ kong_apis:
     config.enabled: false
 
 - name: privateUserICICPayementGateway
-  uris: "/payment/generatelink"
+  uris: "{{ hasuranodecomponent_prefix }}/payment/generatelink"
   upstream_url: "{{ hasuranodecomponent_service_url }}/payment/generatelink"
   strip_uri: true
   plugins:
