@@ -156,6 +156,7 @@ uci_registry_service_url: "http://fusionauth-service:9011"
 uci_admin_service_url: "http://uci-service:9999"
 notification_service_url: "http://notification-service:9000"
 registry_service_url: "http://registry-service:8081"
+hasuranodecomponent_service_url: "http://10.0.2.17:3001"
 
 premium_consumer_rate_limits:
   - api: createContent
@@ -10314,6 +10315,21 @@ kong_apis:
   - name: acl
     config.whitelist:
     - privateCourseAccess
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+
+- name: privateUserICICPayementGateway
+  uris: "/payment/generatelink"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/payment/generatelink"
+  strip_uri: true
   - name: rate-limiting
     config.policy: local
     config.hour: "{{ medium_rate_limit_per_hour }}"
