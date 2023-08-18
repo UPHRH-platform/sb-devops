@@ -158,8 +158,8 @@ uci_registry_service_url: "http://fusionauth-service:9011"
 uci_admin_service_url: "http://uci-service:9999"
 notification_service_url: "http://notification-service:9000"
 registry_service_url: "http://registry-service:8081"
-hasuranodecomponent_service_url: "http://10.0.2.17:3001"
-usermanagement_service_url: "http://10.0.2.17:5298"
+hasuranodecomponent_service_url: "http://{{hasuranodecomponent_service_ip}}:3001"
+usermanagement_service_url: "http://{{usermanagement_service_ip}}:5298"
 
 premium_consumer_rate_limits:
   - api: createContent
@@ -10352,6 +10352,174 @@ kong_apis:
 - name: privateUserManagementCreate
   uris: "{{ usermanagement_prefix }}/create"
   upstream_url: "{{ usermanagement_service_url }}/api/v1/user/create"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementUpdate
+  uris: "{{ usermanagement_prefix }}/update"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/update"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementDetails
+  uris: "{{ usermanagement_prefix }}/details"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/details"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementList
+  uris: "{{ usermanagement_prefix }}/list"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/list"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementActivate
+  uris: "{{ usermanagement_prefix }}/activate"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/activate"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementDeactivate
+  uris: "{{ usermanagement_prefix }}/deactivate"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/deactivate"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementSmsOtp
+  uris: "{{ usermanagement_prefix }}/sms/otp"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/sms/otp"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementKeycloakOTP
+  uris: "{{ usermanagement_prefix }}/keycloak/otp"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/keycloak/otp"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementKeycloakLogin
+  uris: "{{ usermanagement_prefix }}/keycloak/login"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/keycloak/login"
   strip_uri: true
   plugins:
   - name: jwt
