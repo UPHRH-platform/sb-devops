@@ -125,7 +125,6 @@ registry_service_prefix: /rc
 assessment_prefix: /assessment
 learner_prefix: /learner
 usermanagement_prefix: /api/v1/user
-hasuranodecomponent_prefix: /hasura
 
 
 # Service URLs
