@@ -125,6 +125,7 @@ registry_service_prefix: /rc
 assessment_prefix: /assessment
 learner_prefix: /learner
 usermanagement_prefix: /api/v1/user
+hasuranodecomponent: /
 
 
 # Service URLs
@@ -158,7 +159,7 @@ uci_registry_service_url: "http://fusionauth-service:9011"
 uci_admin_service_url: "http://uci-service:9999"
 notification_service_url: "http://notification-service:9000"
 registry_service_url: "http://registry-service:8081"
-hasuranodecomponent_service_url: "http://10.0.2.17:3001"
+hasuranodecomponent_service_url: "http://10.0.2.17:3000"
 usermanagement_service_url: "http://10.0.2.17:5298"
 
 premium_consumer_rate_limits:
