@@ -10501,7 +10501,6 @@ kong_apis:
   upstream_url: "{{ usermanagement_service_url }}/api/v1/user/keycloak/otp"
   strip_uri: true
   plugins:
-  - name: jwt
   - name: cors
   - "{{ statsd_pulgin }}"
   - name: acl
@@ -10522,7 +10521,6 @@ kong_apis:
   upstream_url: "{{ usermanagement_service_url }}/api/v1/user/keycloak/login"
   strip_uri: true
   plugins:
-  - name: jwt
   - name: cors
   - "{{ statsd_pulgin }}"
   - name: acl
