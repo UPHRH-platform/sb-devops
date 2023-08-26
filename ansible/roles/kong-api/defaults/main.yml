@@ -126,6 +126,7 @@ assessment_prefix: /assessment
 learner_prefix: /learner
 usermanagement_prefix: /api/v1/user
 hasuranodecomponent_prefix: /api/rest
+notifications_prefix: /api
 
 # Service URLs
 knowledge_mw_service_url: "http://knowledge-mw-service:5000"
@@ -160,6 +161,7 @@ notification_service_url: "http://notification-service:9000"
 registry_service_url: "http://registry-service:8081"
 hasuranodecomponent_service_url: "http://{{hasuranodecomponent_service_ip}}:3001"
 usermanagement_service_url: "http://{{usermanagement_service_ip}}:5298"
+notifications_url: "http://{{notifications_ip}}:8080"
 
 premium_consumer_rate_limits:
   - api: createContent
