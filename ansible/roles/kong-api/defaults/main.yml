@@ -12115,3 +12115,255 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
+
+- name: privateUseraddInstituteCourse
+  uris: "{{ hasuranodecomponent_prefix }}/addInstituteCourse"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/addInstituteCourse"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUsergetAllAssessors
+  uris: "{{ hasuranodecomponent_prefix }}/getAllAssessors"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getAllAssessors"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUsergetAllRegulatorDeviceId
+  uris: "{{ hasuranodecomponent_prefix }}/getAllRegulatorDeviceId"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getAllRegulatorDeviceId"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUsergetAllRegulators
+  uris: "{{ hasuranodecomponent_prefix }}/getAllRegulators"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getAllRegulators"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUsergetApplicantDeviceId
+  uris: "{{ hasuranodecomponent_prefix }}/getApplicantDeviceId"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getApplicantDeviceId"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUsergetPendingInspections
+  uris: "{{ hasuranodecomponent_prefix }}/getPendingInspections"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getPendingInspections"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUsersearchCourses
+  uris: "{{ hasuranodecomponent_prefix }}/searchCourses"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/searchCourses"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserupdateApplicantDeviceId
+  uris: "{{ hasuranodecomponent_prefix }}/updateApplicantDeviceId"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/updateApplicantDeviceId"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserupdateAssessorDeviceId
+  uris: "{{ hasuranodecomponent_prefix }}/updateAssessorDeviceId"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/updateAssessorDeviceId"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserupdatePaymentStatus
+  uris: "{{ hasuranodecomponent_prefix }}/updatePaymentStatus"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/updatePaymentStatus"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserupdateRegulatorDeviceId
+  uris: "{{ hasuranodecomponent_prefix }}/updateRegulatorDeviceId"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/updateRegulatorDeviceId"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserviewSchedule
+  uris: "{{ hasuranodecomponent_prefix }}/viewSchedule"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/viewSchedule"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
