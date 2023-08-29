@@ -12052,3 +12052,66 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
+
+- name: privateUserManagementtransaction
+  uris: "{{ usermanagement_prefix }}/transaction"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/transaction"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementtransaction2308281658549
+  uris: "{{ usermanagement_prefix }}/transaction/2308281658549"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/transaction/2308281658549"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserManagementemaildetails
+  uris: "{{ usermanagement_prefix }}/emaildetails"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/emaildetails"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
