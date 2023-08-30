@@ -12075,8 +12075,8 @@ kong_apis:
     config.enabled: false
 
 - name: privateUserManagementtransaction2308281658549
-  uris: "{{ usermanagement_prefix }}/transaction/2308281658549"
-  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/transaction/2308281658549"
+  uris: "{{ usermanagement_prefix }}/transaction/{uniqueRefNumber}"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/transaction/{uniqueRefNumber}"
   strip_uri: true
   plugins:
   - name: jwt
