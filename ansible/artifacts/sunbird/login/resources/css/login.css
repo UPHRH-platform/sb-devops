@@ -271,7 +271,6 @@ a{
 }
 .registerLink{
     opacity: 1;
-    color: rgba(236,73,51,1);
     font-size: 14px;
     font-weight: 700;
     font-style: normal;
@@ -283,6 +282,13 @@ a{
     font-weight: bold;
     outline:none;
     cursor: pointer;
+}
+.register-btn:hover.registerLink{
+    color: rgba(236,73,51,1);
+}
+
+.register-btn {
+    color: rgba(236,73,51,1);
 }
 
 .pointer {
@@ -489,12 +495,6 @@ h1, h2, h3, h4, h5,
     justify-content: space-between;
     width: 100%;
     align-items: baseline;
-    font-size: 12px;
-    line-height: 17px;
-    text-align: left;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
 }
 .forgot-password p{
     opacity: 1;
@@ -697,8 +697,6 @@ h1, h2, h3, h4, h5,
                 text-align: right;
                 display: block !important;
     }
-    
-    
     .sb-btn-primary{
                 border-color: rgba(236,73,51,1);
                 background-color: rgba(236,73,51,1);
@@ -711,9 +709,6 @@ h1, h2, h3, h4, h5,
                 letter-spacing: 0px;
                 text-align: center;
     }
-    .registerLink {
-        color: rgba(236,73,51,1);
-    }
 header .navigation {
     display: flex;
     justify-content: space-between;
@@ -725,6 +720,15 @@ header .navigation {
     z-index: 10;
     background: white;
     border-bottom: 2px solid white;
+}
+
+.register-lbl {
+    font-size: 11px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: baseline;
 }
 
 header .navigation .logo{

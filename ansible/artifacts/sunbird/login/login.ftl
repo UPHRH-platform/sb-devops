@@ -76,10 +76,15 @@
                     <div class="field mb-8">
                         <button id="login" onclick="doLogin(event)" class="mt-24 sb-btn sb-btn-normal sb-btn-primary width-100">${msg("login")}</button>
                     </div>
-                  <#if realm.password && realm.registrationAllowed && !usernameEditDisabled??>
+                     
+                    <div class="mt-16">
+                    <label class="register-lbl">${msg("noAccount")} </label>
+                    </div>
+                    <#if realm.password && realm.registrationAllowed && !usernameEditDisabled??>
                     <div id="kc-registration" class="field">
                                 <div class="ui content signUpMsg">
-                                    ${msg("noAccount")} <span id="signup" role="link" tabindex="0" class="registerLink" onclick=navigate('self')>${msg("registerHere")}</span>
+                                    <button id="login" onclick="doLogin(event)" class="mt-8 sb-btn sb-btn-normal sb-btn-primary width-100 register-btn"><span id="signup" role="link" tabindex="0" class="registerLink" onclick=navigate('self')>${msg("registerHere")}</span></button>
+                                    
                                 </div>
                     </div>
                   </#if>
