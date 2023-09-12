@@ -10356,8 +10356,8 @@ kong_apis:
     config.enabled: false
 
 - name: privateUserManagementCreate
-  uris: "{{ usermanagement_prefix }}/creates"
-  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/creates"
+  uris: "{{ usermanagement_prefix }}/create"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/create"
   strip_uri: true
   plugins:
   - name: jwt
