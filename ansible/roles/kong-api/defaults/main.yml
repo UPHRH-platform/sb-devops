@@ -14664,7 +14664,7 @@ kong_apis:
 
 - name: privateUserattribute
   uris: "{{ usermanagement_prefix }}/attribute/{fieldName}/{fieldValue}/{offset}/{limit}"
-  upstream_url: "{{ usermanagement_service_url }}/api/v1/attribute/{fieldName}/{fieldValue}/{offset}/{limit}"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/attribute/{fieldName}/{fieldValue}/{offset}/{limit}"
   strip_uri: true
   plugins:
   - name: jwt
