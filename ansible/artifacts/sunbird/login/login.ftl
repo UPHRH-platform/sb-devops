@@ -76,7 +76,8 @@
                   <#if realm.password && realm.registrationAllowed && !usernameEditDisabled??>
                     <div id="kc-registration" class="field">
                                 <div class="ui content signUpMsg">
-                                    ${msg("noAccount")} <span id="signup" role="link" tabindex="0" class="registerLink" onclick=navigate('self')>${msg("registerHere")}</span>
+                               <!--  ${msg("noAccount")} <span id="signup" role="link" tabindex="0" class="registerLink" onclick=navigate('self')>${msg("registerHere")}</span> -->
+                               <button id="signup" onclick="navigate('self')" class="mt-8 sb-btn sb-btn-normal sb-btn-primary width-100 register-btn"><span tabindex="0" onclick=navigate('self')>${msg("registerHere")}</span></button>
                                 </div>
                     </div>
                   </#if>
