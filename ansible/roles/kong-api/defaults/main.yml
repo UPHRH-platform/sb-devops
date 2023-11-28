@@ -14749,7 +14749,7 @@ kong_apis:
 
 - name: privateUsergetCourseMapping
   uris: "{{ hasuranodecomponent_prefix }}/getCourseMapping"
-  upstream_url: "{{ hasuranodecomponents_service_url }}/api/rest/getCourseMapping"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getCourseMapping"
   strip_uri: true
   plugins:
   - name: jwt
@@ -14770,7 +14770,7 @@ kong_apis:
 
 - name: privateUsergetFormSubmissionsByCourseIdApplicantIdFormStatus
   uris: "{{ hasuranodecomponent_prefix }}/getFormSubmissionsByCourseIdApplicantIdFormStatus"
-  upstream_url: "{{ hasuranodecomponents_service_url }}/api/rest/getFormSubmissionsByCourseIdApplicantIdFormStatus"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getFormSubmissionsByCourseIdApplicantIdFormStatus"
   strip_uri: true
   plugins:
   - name: jwt
@@ -14791,7 +14791,7 @@ kong_apis:
 
 - name: privateUserfilterRegulatorByRole
   uris: "{{ hasuranodecomponent_prefix }}/filterRegulatorByRole"
-  upstream_url: "{{ hasuranodecomponents_service_url }}/api/rest/filterRegulatorByRole"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/filterRegulatorByRole"
   strip_uri: true
   plugins:
   - name: jwt
