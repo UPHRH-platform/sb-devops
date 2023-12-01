@@ -14873,9 +14873,9 @@ kong_apis:
     config.required: false
     config.enabled: false
 
-- name: privateUserfilterFormSubmissionsByRound
-  uris: "{{ hasuranodecomponent_prefix }}/filterFormSubmissionsByRound"
-  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/filterFormSubmissionsByRound"
+- name: privateUserfilterFormSubmissionByRound
+  uris: "{{ hasuranodecomponent_prefix }}/filterFormSubmissionByRound"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/filterFormSubmissionByRound"
   strip_uri: true
   plugins:
   - name: jwt
