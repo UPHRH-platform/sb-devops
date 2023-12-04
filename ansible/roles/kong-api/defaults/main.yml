@@ -14893,3 +14893,66 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
+
+- name: privateUserGetApprovedSubmissionCount
+  uris: "{{ hasuranodecomponent_prefix }}/getApprovedSubmissionCount"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getApprovedSubmissionCount"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserGetRejectedSubmissionsCount
+  uris: "{{ hasuranodecomponent_prefix }}/getRejectedSubmissionsCount"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getRejectedSubmissionsCount"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserGetInProgressSubmissionCount
+  uris: "{{ hasuranodecomponent_prefix }}/getInProgressSubmissionCount"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getInProgressSubmissionCount"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
