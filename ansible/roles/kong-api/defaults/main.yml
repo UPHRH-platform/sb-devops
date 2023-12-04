@@ -14957,7 +14957,7 @@ kong_apis:
     config.required: false
     config.enabled: false
 
-  - name: privateUserGetOGAFormsCountByRoundAndFormStatus
+- name: privateUserGetOGAFormsCountByRoundAndFormStatus
   uris: "{{ hasuranodecomponent_prefix }}/getOGAFormsCountByRoundAndFormStatus"
   upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getOGAFormsCountByRoundAndFormStatus"
   strip_uri: true
