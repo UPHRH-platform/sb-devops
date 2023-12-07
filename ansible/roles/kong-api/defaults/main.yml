@@ -15021,8 +15021,8 @@ kong_apis:
     config.enabled: false
 
 - name: privateUserApplicantApplicationStatus
-  uris: "{{ hasuranodecomponent_prefix }}/applicant/application/status"
-  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/applicant/application/status"
+  uris: "{{ hasuranodecomponent_prefix }}/applicantApplicationStatus"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/applicantApplicationStatus"
   strip_uri: true
   plugins:
   - name: jwt
