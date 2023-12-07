@@ -165,7 +165,7 @@ usermanagement_service_url: "http://central-usermanagement.sunbird-rc.svc.cluste
 rcusermanagement_service_url: "http://sunbirdrc-usermanagement.sunbird-rc.svc.cluster.local:8001"
 notifications_url: "http://{{notifications_ip}}"
 exam_url: "http://examsandadmissions-be.sunbird-rc.svc.cluster.local:8083"
-usermanagements_service_url: "http://user-manangement-service:5298"
+usermanagements_service_url: "http://user-manangement-service.sunbird-rc.svc.cluster.local:5298"
 hasuranodecomponents_service_url: "http://hasuranodecomponent-service:3000"
 
 premium_consumer_rate_limits:
