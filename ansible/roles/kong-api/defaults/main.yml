@@ -164,7 +164,7 @@ hasuranodecomponent_service_url: "http://{{hasuranodecomponent_service_ip}}:3001
 usermanagements_service_url: "http://{{usermanagement_service_ip}}:5298"
 notifications_url: "http://{{notifications_ip}}"
 exam_url: "http://{{exam_ip}}"
-usermanagements_service_url: "http://user-manangement-service.registration.svc.cluster.local:5298"
+usermanagements_service_url: "http://central-usermanagement.sunbird-rc.svc.cluster.local:5298"
 hasuranodecomponents_service_url: "http://hasuranodecomponent-service.registration.svc.cluster.local:3000"
 
 premium_consumer_rate_limits:
