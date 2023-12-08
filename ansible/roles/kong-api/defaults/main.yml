@@ -10337,7 +10337,7 @@ kong_apis:
 
 - name: privateUserICICPayementGateway
   uris: "/payment/generatelink"
-  upstream_url: "{{ hasuranodecomponent_service_url }}/payment/generatelink"
+  upstream_url: "{{ usermanagements_service_url }}/payment/generatelink"
   strip_uri: true
   plugins:
   - name: jwt
