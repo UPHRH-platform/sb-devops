@@ -1122,6 +1122,291 @@ nginxconfig: |
      }
   }
 
+redirect.comf: |
+  server {
+      listen 80 default_server;
+      listen [::]:80 default_server;
+      server_name _;
+      return 301 https://$host$request_uri;
+    }
+nginx.conf: |
+  server {                                                                                                                                                listen 80;                                                                                                                                          return 301 https://$host$request_uri;                                                                                                           }
+    server {
+        listen 443 ssl;
+
+        ssl_certificate /etc/secrets/site.crt;
+        ssl_certificate_key /etc/secrets/site.key;
+
+        server_name uat-grievances.upsmfac.org;
+
+        location /api {
+        if ($request_method = OPTIONS ) {
+              add_header Access-Control-Allow-Origin "*" ;
+              add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+              add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+              add_header Content-Length 0;
+              add_header Content-Type text/plain;
+              return 200;
+          }
+            client_max_body_size 10M;
+            proxy_pass http://grievance-be.sunbird-rc.svc.cluster.local:8088;
+        }
+
+        location / {
+              add_header Access-Control-Allow-Origin "*" ;
+              add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+              add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+          types {
+            text/html                            html htm shtml;
+            text/css                             css;
+            application/javascript               js;
+            # Add more MIME types here
+          }
+            client_max_body_size 10M;
+            proxy_pass http://grievance-app-grievanceapp.sunbird-rc.svc.cluster.local:80;
+            #root /usr/share/nginx/html;
+            #index index.html index.htm;
+            #try_files $uri $uri/ /index.html;
+            #error_page 404 =200 /index.html;
+        }
+        location ~ ^/(new-ticket|feedback|home|user-profile|dashboard|grievance/manage-tickets|grievance/manage-tickets/:id|user-manage|User-manage/userform) {
+              add_header Access-Control-Allow-Origin "*" ;
+              add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+              add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+          types {
+            text/html                            html htm shtml;
+            text/css                             css;
+            application/javascript               js;
+            # Add more MIME types here
+          }
+            client_max_body_size 10M;
+            proxy_pass http://grievance-app-grievanceapp.sunbird-rc.svc.cluster.local:80;
+            root /usr/share/nginx/html;
+            index index.html index.htm;
+            try_files $uri $uri/ /index.html ;
+            proxy_intercept_errors on;
+            proxy_set_header Referer $http_referer;
+        }
+
+    }
+
+    server {
+        listen 80;
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+
+        ssl_certificate /etc/secrets/site.crt;
+        ssl_certificate_key /etc/secrets/site.key;
+
+        server_name uat-registration.upsmfac.org;
+
+        location / {
+            #add_header Access-Control-Allow-Origin "*" ;
+            #add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+            #add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+            if ($request_method = OPTIONS ) {
+                  add_header Access-Control-Allow-Origin "*" ;
+                  add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, PUT, POST";
+                  add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+                  add_header Content-Length 0;
+                  add_header Content-Type text/plain;
+                  return 200;
+            }
+            proxy_pass http://sunbirdrc-registry.sunbird-rc.svc.cluster.local:8081;
+            #root /usr/share/nginx/html;
+            #index index.html index.htm;
+            #try_files $uri $uri/ /index.html =404;
+        }
+
+
+        location /auth {
+            if ($request_method = OPTIONS ) {
+                  add_header Access-Control-Allow-Origin "*" ;
+                  add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, PUT, POST";
+                  add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+                  add_header Content-Length 0;
+                  add_header Content-Type text/plain;
+                  return 200;
+            }
+            proxy_pass http://172.16.2.3:8080;
+        }
+
+        location /claim-ms/ {
+            if ($request_method = OPTIONS ) {
+                  add_header Access-Control-Allow-Origin "*" ;
+                  add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, PUT, POST";
+                  add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+                  add_header Content-Length 0;
+                  add_header Content-Type text/plain;
+                  return 200;
+            }
+            set $target http://sunbirdrc-claim-ms.sunbird-rc.svc.cluster.local:8082;
+            rewrite ^/claim-ms/(.*) /$1 break;
+            proxy_pass $target;
+
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Scheme $scheme;
+            proxy_connect_timeout 1;
+            proxy_send_timeout 30;
+            proxy_read_timeout 40;
+            proxy_set_header    X-Forwarded-Proto $scheme;
+          ## proxy_pass http://10.0.2.18:8082;
+        }
+    }
+
+    server {
+        listen 80;
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+
+        ssl_certificate /etc/secrets/site.crt;
+        ssl_certificate_key /etc/secrets/site.key;
+
+        server_name uat-payment.upsmfac.org;
+
+        location / {
+          add_header Access-Control-Allow-Origin "*" ;
+          add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+          add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+        if ($request_method = OPTIONS ) {
+              add_header Access-Control-Allow-Origin "*" ;
+              add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+              add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+              add_header Content-Length 0;
+              add_header Content-Type text/plain;
+              return 200;
+          }
+            proxy_pass http://central-usermanagement.sunbird-rc.svc.cluster.local:5298;
+        }
+        location /payment/generatelink  {
+          add_header Access-Control-Allow-Origin "*" ;
+          add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+        add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+        if ($request_method = OPTIONS ) {
+              add_header Access-Control-Allow-Origin "*" ;
+              add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+              add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+              add_header Content-Length 0;
+              add_header Content-Type text/plain;
+              return 200;
+          }
+            proxy_pass http://hasuranodecomponent.sunbird-rc.svc.cluster.local:3000;
+        }
+    }
+
+    server {
+        listen 80;
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+
+        ssl_certificate /etc/secrets/site.crt;
+        ssl_certificate_key /etc/secrets/site.key;
+
+        server_name uat-usermanagement.upsmfac.org;
+
+        location / {
+        if ($request_method = OPTIONS ) {
+              add_header Access-Control-Allow-Origin "*" ;
+              add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+              add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+              add_header Content-Length 0;
+              add_header Content-Type text/plain;
+              return 200;
+          }
+            proxy_pass http://sunbirdrc-usermanagement.sunbird-rc.svc.cluster.local:8001;
+        }
+    }
+
+    server {
+        listen 80;
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+
+        ssl_certificate /etc/secrets/site.crt;
+        ssl_certificate_key /etc/secrets/site.key;
+
+        server_name  uat-registrations.upsmfac.org;
+
+        location / {
+          add_header Access-Control-Allow-Origin "*" ;
+          add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+        add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+        if ($request_method = OPTIONS ) {
+              add_header Access-Control-Allow-Origin "*" ;
+              add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+              add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+              add_header Content-Length 0;
+              add_header Content-Type text/plain;
+              return 200;
+          }
+            proxy_pass http://registryapp.sunbird-rc.svc.cluster.local:80;
+        }
+    }
+
+    server {
+        listen 80;
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+
+        ssl_certificate /etc/secrets/site.crt;
+        ssl_certificate_key /etc/secrets/site.key;
+
+        server_name uat-exams.upsmfac.org;
+
+        location /api {
+
+        if ($request_method = OPTIONS ) {
+              add_header Access-Control-Allow-Origin "*" ;
+              add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+              add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+              add_header Content-Length 0;
+              add_header Content-Type text/plain;
+              return 200;
+          }
+            proxy_pass http://examsandadmissions-be.sunbird-rc.svc.cluster.local:8083;
+            client_max_body_size 5M;
+        }
+
+        location / {
+
+        if ($request_method = OPTIONS ) {
+              add_header Access-Control-Allow-Origin "*" ;
+              add_header Access-Control-Allow-Methods "GET, OPTIONS, PATCH, POST";
+              add_header Access-Control-Allow-Headers "Access-Control-Allow-Origin, Authorization, Content-Type, user-id, Content-Encoding";
+              add_header Content-Length 0;
+              add_header Content-Type text/plain;
+              return 200;
+          }
+          types {
+            text/html                            html htm shtml;
+            text/css                             css;
+            application/javascript               js;
+            # Add more MIME types here
+          }
+            proxy_pass http://examsandadmissionsapp.sunbird-rc.svc.cluster.local:80;
+            #root /usr/share/nginx/html;
+            #index index.html index.htm;
+            #try_files $uri $uri/ /index.html;
+            #error_page 404 =200 /index.html;
+        }
+    }
+
 keycloakconf: |
   server {
     listen 80;
