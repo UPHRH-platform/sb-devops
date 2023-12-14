@@ -5,7 +5,7 @@ mongodb_repository:
   "4.2": "deb http://repo.mongodb.org/apt/ubuntu {{ ansible_distribution_release }}/mongodb-org/4.2 multiverse"
   "4.4": "deb http://repo.mongodb.org/apt/ubuntu {{ ansible_distribution_release }}/mongodb-org/4.4 multiverse"
 
-mongodb_pymongo_package: "{{ 'python3-pymongo' if ansible_facts['python'].version.major == 3 else 'python-pymongo' }}"
+mongodb_pymongo_package: "{{ 'python3-pymongo' if ansible_facts['python'].version.major == 3 else 'python3-pymongo' }}"
 mongodb_pymongo_deps:
   - "{{ 'python3-dev' if ansible_facts['python'].version.major == 3 else 'python-dev' }}"
   - "{{ 'python3-pip' if ansible_facts['python'].version.major == 3 else 'python3-pip' }}"
