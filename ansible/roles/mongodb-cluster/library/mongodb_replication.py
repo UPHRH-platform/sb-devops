@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # (c) 2015-2021, Sergei Antipov
 #
