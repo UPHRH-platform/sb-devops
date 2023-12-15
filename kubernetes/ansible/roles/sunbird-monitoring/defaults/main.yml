@@ -5,6 +5,7 @@ monitoring_stack:
   - prometheus-operator
   - cassandra-jmx-exporter
   - elasticsearch-exporter
+  - node-exporter
   - logger
   - blackbox-exporter
   - additional-scrape-configs
