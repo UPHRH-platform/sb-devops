@@ -15229,3 +15229,24 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
+
+- name: privateUserAddConfig
+  uris: "{{ hasuranodecomponent_prefix }}/config/add"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/config/add"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
