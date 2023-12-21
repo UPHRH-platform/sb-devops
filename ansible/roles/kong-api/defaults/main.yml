@@ -15397,3 +15397,45 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
+
+- name: privateUserUpdateTransactionStatusByRefNo
+  uris: "{{ hasuranodecomponent_prefix }}/updateTransactionStatusByRefNo"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/updateTransactionStatusByRefNo"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserUpdateRoleById
+  uris: "{{ hasuranodecomponent_prefix }}/updateRoleById"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/updateRoleById"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
