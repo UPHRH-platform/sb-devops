@@ -15355,3 +15355,45 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
+
+- name: privateUserAddNewRoleWithPermission
+  uris: "{{ hasuranodecomponent_prefix }}/addNewRoleWithPermission"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/addNewRoleWithPermission"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserGetAllRolesWithPermissions
+  uris: "{{ hasuranodecomponent_prefix }}/getAllRolesWithPermissions"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getAllRolesWithPermissions"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
