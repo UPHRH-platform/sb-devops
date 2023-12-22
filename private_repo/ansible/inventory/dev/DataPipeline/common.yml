@@ -1,8 +1,9 @@
 # ------------------------------------------------------------------------------------------------------------ #
 # Mandatorty variables - DO NOT LEAVE ANYTHING BLANK #
+cloud_service_provider: "gcp"       # Your cloud service provider name. Supported values are aws, azure, gcloud
 domain_name: ""          # your domain name like example.com
 # docker hub details
-dockerhub: "change.docker.url"                                      # docker hub username or url incase of private registry
+dockerhub: "asia.gcr.io"                                      # docker hub username or url incase of private registry
 private_ingressgateway_ip: ""                        # your private kubernetes load balancer ip
 # Note - You can use the same azure account for the below variables or have separate azure accounts
 sunbird_private_storage_account_name: "change.azure.storage.account.name"         # Azure account name for storing private data (like reports, telemetry data)
@@ -168,3 +169,11 @@ processing_kafka_overriden_topics:
   - name: ml.observation.druid
     retention_time: 86400000
     replication_factor: 1
+
+# Define the below if you are using Google Cloud
+gcloud_private_bucket_name: "dev-private-upsmf"
+gcloud_public_bucket_name: "dev-publicupsmf"
+gcloud_artifact_bucket_name: "dev-artifacts-upsmf"
+gcloud_management_bucket_name: "dev-mgmt-upsmf"
+
+gcloud_private_bucket_projectId: "upsmf-368011"

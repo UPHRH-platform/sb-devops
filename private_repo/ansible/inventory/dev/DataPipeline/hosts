@@ -1,39 +1,39 @@
 [all:vars]
 # Replace the value deployer to your server login user name, for example ubuntu
-ansible_ssh_user=deployer
+ansible_ssh_user=ubuntu
 ansible_ssh_private_key_file=/var/lib/jenkins/secrets/deployer_ssh_key
 
 ################ Core #########################
 [core-cassandra]
-10.0.1.8
+10.0.2.3
 
 [core-es-1]
-10.0.1.8   # This should be elasticsearch master IP of Core
+10.0.2.3  # This should be elasticsearch master IP of Core
 
 [core-es:children]
 core-es-1
 
 [log-es-1]
-10.1.4.8
+10.0.2.7
 
 [log-es:children]
 log-es-1
 
 ################# KP ##########################
 [learning]
-10.0.1.5
+10.0.2.5
 
 [composite-search-cluster]
-10.1.4.5
+10.0.2.3
 
 [lp-cassandra]
-10.0.1.8
+10.0.2.7
 
 [dp-cassandra]
-10.0.1.8
+10.0.2.7
 
 [lp-redis]
-10.0.1.5
+10.0.2.5
 
 ################# DP #########################
 [report-cassandra:children]
@@ -43,13 +43,13 @@ core-cassandra
 18.3.1.7
 
 [spark]
-10.0.1.6
+10.0.2.4
 
 [cassandra]
-10.0.1.8
+10.0.2.3
 
 [postgres]
-10.0.1.8
+10.0.2.3
 
 [lpa:children]
 spark
@@ -58,22 +58,22 @@ analytics-api
 cassandra
 
 [kafka-indexer]
-10.0.1.6
+10.0.2.4
 
 [influxdb]
-10.0.1.6
+10.0.2.4
 
 [redis]
-10.0.1.5
+10.0.2.5
 
 [redisall:children]
 redis
 
 [processing-cluster-kafka]
-10.0.1.5
+10.0.2.5
 
 [processing-cluster-zookeepers]
-10.0.1.5
+10.0.2.5
 
 [ingestion-cluster-kafka:children]
 processing-cluster-kafka
@@ -88,31 +88,31 @@ processing-cluster-zookeepers
 localhost ansible_connection=local
 
 [druid-postgres]
-10.0.1.8
+10.0.2.7
 
 [rollup-coordinator]
 raw-coordinator
 
 [raw-coordinator]
-10.0.1.9
+10.0.2.7
 
 [raw-overlord]
-10.0.1.9
+10.0.2.7
 
 [raw-broker]
-10.0.1.9
+10.0.2.7
 
 [raw-historical]
-10.0.1.9
+10.0.2.7
 
 [raw-middlemanager]
-10.0.1.9
+10.0.2.7
 
 [raw-graphite]
-10.0.1.9
+10.0.2.7
 
 [raw-zookeeper]
-10.0.1.9
+10.0.2.7
 
 [druid-raw:children]
 raw-coordinator
@@ -127,10 +127,10 @@ raw-zookeeper
 cluster=raw
 
 [broker]
-10.0.1.9
+10.0.2.7
 
 [coordinator]
-10.0.1.9
+10.0.2.7
 
 [dp:children]
 local

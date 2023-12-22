@@ -35,7 +35,7 @@ autoscaling:
   targetMemoryUtilizationPercentage: {{ apimanager_autoscaling_targetMemoryUtilizationPercentage|default('') }}
 
 serviceMonitor:
-  enabled: true
+  enabled: false
   labels: # labels with which the prometheus choose the serviceMonitor
     app: prometheus-operator
     release: prometheus-operator
