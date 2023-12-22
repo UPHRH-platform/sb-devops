@@ -14348,6 +14348,27 @@ kong_apis:
     config.required: false
     config.enabled: false
 
+- name: uploadAssessorSchedule
+  uris: "{{ hasuranodecomponent_prefix }}/upload/assessor/schedule"
+  upstream_url: "{{ hasuranodecomponents_service_url }}/upload/assessor/schedule"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+        - userCreate
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+
 - name: privateUserFortestCreate
   uris: "{{ usermanagement_prefix }}/create"
   upstream_url: "{{ usermanagements_service_url }}/api/v1/user/create"
