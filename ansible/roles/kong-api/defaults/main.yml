@@ -14350,7 +14350,7 @@ kong_apis:
 
 - name: uploadAssessorSchedule
   uris: "{{ hasuranodecomponent_prefix }}/upload/assessor/schedule"
-  upstream_url: "{{ hasuranodecomponents_service_url }}/upload/assessor/schedule"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/upload/assessor/schedule"
   strip_uri: true
   plugins:
     - name: jwt
