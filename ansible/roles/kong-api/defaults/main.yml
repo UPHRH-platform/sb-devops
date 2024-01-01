@@ -15502,3 +15502,66 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
+
+- name: updatePassbook
+  uris: "{{ course_service_prefix }}/v1/passbook/update"
+  upstream_url: "{{ lms_service_url }}/v1/passbook/update"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+        - anonymousCourseAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: true
+      config.enabled: true
+
+- name: readPassbook
+  uris: "{{ course_service_prefix }}/v1/passbook/read"
+  upstream_url: "{{ lms_service_url }}/v1/passbook/read"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+        - anonymousCourseAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: true
+      config.enabled: true
+
+- name: readPassbookByAdmin
+  uris: "{{ course_service_prefix }}/v1/passbook/read/admin"
+  upstream_url: "{{ lms_service_url }}/v1/passbook/read/admin"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+        - anonymousCourseAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: true
+      config.enabled: true
