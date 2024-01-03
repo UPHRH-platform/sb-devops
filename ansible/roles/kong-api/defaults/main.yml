@@ -14366,6 +14366,27 @@ kong_apis:
     config.required: false
     config.enabled: false
 
+- name: uploadAssessorSchedule
+  uris: "{{ hasuranodecomponent_prefix }}/upload/assessor/schedule"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/upload/assessor/schedule"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+        - userCreate
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+
 - name: privateUserFortestCreate
   uris: "{{ usermanagement_prefix }}/create"
   upstream_url: "{{ usermanagements_service_url }}/api/v1/user/create"
@@ -15289,3 +15310,276 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
+
+- name: privateUserDeleteInstituteFormDraftsById
+  uris: "{{ hasuranodecomponent_prefix }}/deleteInstituteFormDraftsById"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/deleteInstituteFormDraftsById"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserUpdateInstituteFormDrafts
+  uris: "{{ hasuranodecomponent_prefix }}/updateInstituteFormDrafts"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/updateInstituteFormDrafts"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserICICPayementGatewayV2
+  uris: "/payment/v2/generatelink"
+  upstream_url: "{{ hasuranodecomponents_service_url }}/payment/generatelink"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserGetOGAFormForInspectionSchedule
+  uris: "{{ hasuranodecomponent_prefix }}/getOGAFormForInspectionSchedule"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getOGAFormForInspectionSchedule"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserAddNewRoleWithPermission
+  uris: "{{ hasuranodecomponent_prefix }}/addNewRoleWithPermission"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/addNewRoleWithPermission"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserGetAllRolesWithPermissions
+  uris: "{{ hasuranodecomponent_prefix }}/getAllRolesWithPermissions"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getAllRolesWithPermissions"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserUpdateTransactionStatusByRefNo
+  uris: "{{ hasuranodecomponent_prefix }}/updateTransactionStatusByRefNo"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/updateTransactionStatusByRefNo"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserUpdateRoleById
+  uris: "{{ hasuranodecomponent_prefix }}/updateRoleById"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/updateRoleById"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserGetPages
+  uris: "{{ hasuranodecomponent_prefix }}/getPages"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/getPages"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: privateUserSavePageInfo
+  uris: "{{ hasuranodecomponent_prefix }}/savePageInfo"
+  upstream_url: "{{ hasuranodecomponent_service_url }}/api/rest/savePageInfo"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
+- name: updatePassbook
+  uris: "{{ course_service_prefix }}/v1/passbook/update"
+  upstream_url: "{{ lms_service_url }}/v1/passbook/update"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+        - anonymousCourseAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: true
+      config.enabled: true
+
+- name: readPassbook
+  uris: "{{ course_service_prefix }}/v1/passbook/read"
+  upstream_url: "{{ lms_service_url }}/v1/passbook/read"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+        - anonymousCourseAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: true
+      config.enabled: true
+
+- name: readPassbookByAdmin
+  uris: "{{ course_service_prefix }}/v1/passbook/read/admin"
+  upstream_url: "{{ lms_service_url }}/v1/passbook/read/admin"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+        - anonymousCourseAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: true
+      config.enabled: true
