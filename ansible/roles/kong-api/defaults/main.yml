@@ -13946,8 +13946,8 @@ kong_apis:
     config.enabled: false
 
 - name: privateUserForusrLogout
-  uris: "{{ usermanagement_prefix }}/{userId}/logout"
-  upstream_url: "{{ usermanagements_service_url }}/api/v1/user/{userId}/logout"
+  uris: "{{ usermanagement_prefix }}/keycloak/logout"
+  upstream_url: "{{ usermanagements_service_url }}/api/v1/user/logout"
   strip_uri: true
   plugins:
   - name: cors
