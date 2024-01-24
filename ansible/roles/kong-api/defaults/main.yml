@@ -13933,6 +13933,23 @@ kong_apis:
     config.required: false
     config.enabled: false
 
+- name: privateUserForusrLogout
+  uris: "{{ usermanagement_prefix }}/keycloak/logout"
+  upstream_url: "{{ usermanagements_service_url }}/api/v1/user/logout"
+  strip_uri: true
+  plugins:
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+
 - name: privateUserForKeycloakUsrOTP
   uris: "{{ usermanagement_prefix }}/keycloak/usrOTP"
   upstream_url: "{{ usermanagements_service_url }}/api/v1/user/keycloak/usrOTP"
