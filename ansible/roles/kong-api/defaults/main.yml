@@ -125,6 +125,7 @@ registry_service_prefix: /rc
 assessment_prefix: /assessment
 learner_prefix: /learner
 usermanagement_prefix: /api/v1/user
+rcusermanagement_prefix: /api/v1
 hasuranodecomponent_prefix: /api/rest
 notifications_prefix: /api
 exam_prefix: /api
@@ -12539,7 +12540,7 @@ kong_apis:
     config.enabled: false
 
 - name: privateBulkUploadForRC
-  uris: "{{ rcusermanagement_service_url }}/api/v1/keycloak/pushBulkUserBG"
+  uris: "{{ rcusermanagement_prefix }}/keycloak/pushBulkUserBG"
   upstream_url: "{{ rcusermanagement_service_url }}/api/v1/keycloak/pushBulkUserBG"
   strip_uri: true
   plugins:
