@@ -15715,7 +15715,7 @@ kong_apis:
       config.enabled: false
 
 - name: commentHubCreationServiceAddNew
-  uris: "{{ comment_hub_prefix }}/api/v1/comment/addNew"
+  uris: "{{ comment_hub_prefix }}/v1/comment/addNew"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/addNew"
   strip_uri: true
   plugins:
@@ -15736,7 +15736,7 @@ kong_apis:
       config.enabled: false
       
 - name: commentHubCreationServiceGetAll
-  uris: "{{ comment_hub_prefix }}/api/v1/comment/getAll"
+  uris: "{{ comment_hub_prefix }}/v1/comment/getAll"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/getAll"
   strip_uri: true
   plugins:
@@ -15757,7 +15757,7 @@ kong_apis:
       config.enabled: false
 
 - name: commentHubCreationServiceMultipleWorkFlows
-  uris: "{{ comment_hub_prefix }}/api/v1/comment/multipleWorkflows"
+  uris: "{{ comment_hub_prefix }}/v1/comment/multipleWorkflows"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/multipleWorkflows"
   strip_uri: true
   plugins:
@@ -15778,7 +15778,7 @@ kong_apis:
       config.enabled: false
 
 - name: commentHubCreationServiceResolveStatus
-  uris: "{{ comment_hub_prefix }}/api/v1/comment/setStatusToResolved"
+  uris: "{{ comment_hub_prefix }}/v1/comment/setStatusToResolved"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/setStatusToResolved"
   strip_uri: true
   plugins:
@@ -15799,7 +15799,7 @@ kong_apis:
       config.enabled: false
 
 - name: commentHubCreationServiceResolve
-  uris: "{{ comment_hub_prefix }}/api/v1/comment/*/resolve"
+  uris: "{{ comment_hub_prefix }}/v1/comment/*/resolve"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/*/resolve"
   strip_uri: true
   plugins:
@@ -15820,7 +15820,7 @@ kong_apis:
       config.enabled: false
 
 - name: commentHubCreationServiceDelete
-  uris: "{{ comment_hub_prefix }}/api/v1/comment/delete/"
+  uris: "{{ comment_hub_prefix }}/v1/comment/delete/"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/delete/"
   strip_uri: true
   plugins:
