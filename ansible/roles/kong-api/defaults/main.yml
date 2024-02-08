@@ -15727,25 +15727,25 @@ kong_apis:
       config.enabled: false
       
 - name: commentHubCreationServiceGetAll
- uris: "{{ comment_hub_prefix }}/api/v1/comment/getAll"
- upstream_url: "{{ commenthub_service_url }}/api/v1/comment/getAll"
- strip_uri: true
- plugins:
-   - name: jwt
-   - name: cors
-   - "{{ statsd_pulgin }}"
-   - name: acl
-     config.whitelist:
-     - anonymousAppAccess
-   - name: rate-limiting
-     config.policy: local
-     config.hour: "{{ medium_rate_limit_per_hour }}"
-     config.limit_by: credential
-   - name: request-size-limiting
-     config.allowed_payload_size: "{{ small_request_size_limit }}"
-   - name: opa-checks
-     config.required: false
-     config.enabled: false
+  uris: "{{ comment_hub_prefix }}/api/v1/comment/getAll"
+  upstream_url: "{{ commenthub_service_url }}/api/v1/comment/getAll"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+      - anonymousAppAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
 
 - name: commentHubCreationServiceMultipleWorkFlows
   uris: "{{ comment_hub_prefix }}/api/v1/comment/multipleWorkflows"
