@@ -15684,7 +15684,7 @@ kong_apis:
       config.required: false
       config.enabled: false
 
-  - name: commentHubCreationServiceAddComment
+- name: commentHubCreationServiceAddComment
   uris: "{{ comment_hub_prefix }}/v1/comment/addFirst"
   upstream_url: "{{ commenthub_service_url }}/v1/comment/addFirst"
   strip_uri: true
@@ -15705,7 +15705,7 @@ kong_apis:
       config.required: false
       config.enabled: false
 
-  - name: commentHubCreationServiceAddNew
+- name: commentHubCreationServiceAddNew
   uris: "{{ comment_hub_prefix }}/api/v1/comment/addNew"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/addNew"
   strip_uri: true
@@ -15767,6 +15767,7 @@ kong_apis:
     - name: opa-checks
       config.required: false
       config.enabled: false
+
 - name: commentHubCreationServiceResolveStatus
   uris: "{{ comment_hub_prefix }}/api/v1/comment/setStatusToResolved"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/setStatusToResolved"
@@ -15787,6 +15788,7 @@ kong_apis:
     - name: opa-checks
       config.required: false
       config.enabled: false
+
 - name: commentHubCreationServiceResolve
   uris: "{{ comment_hub_prefix }}/api/v1/comment/*/resolve"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/*/resolve"
@@ -15807,6 +15809,7 @@ kong_apis:
     - name: opa-checks
       config.required: false
       config.enabled: false
+
 - name: commentHubCreationServiceDelete
   uris: "{{ comment_hub_prefix }}/api/v1/comment/delete/"
   upstream_url: "{{ commenthub_service_url }}/api/v1/comment/delete/"
