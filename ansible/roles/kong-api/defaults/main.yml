@@ -15674,7 +15674,7 @@ kong_apis:
 
 - name: commentHubCreationServiceUpdateComment
   uris: "{{ comment_hub_prefix }}/v1/comment/update"
-  upstream_url: "{{ commenthub_service_url }}/v1/comment/update"
+  upstream_url: "{{ commenthub_service_url }}/api/v1/comment/update"
   strip_uri: true
   plugins:
     - name: jwt
@@ -15695,7 +15695,7 @@ kong_apis:
 
 - name: commentHubCreationServiceAddComment
   uris: "{{ comment_hub_prefix }}/v1/comment/addFirst"
-  upstream_url: "{{ commenthub_service_url }}/v1/comment/addFirst"
+  upstream_url: "{{ commenthub_service_url }}/api/v1/comment/addFirst"
   strip_uri: true
   plugins:
     - name: jwt
