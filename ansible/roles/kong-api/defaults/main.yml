@@ -162,14 +162,14 @@ uci_registry_service_url: "http://fusionauth-service:9011"
 uci_admin_service_url: "http://uci-service:9999"
 notification_service_url: "http://notification-service:9000"
 registry_service_url: "http://registry-service:8081"
-hasuranodecomponent_service_url: "http://{{hasuranodecomponent_service_ip}}:3001"
-usermanagement_service_url: "http://{{usermanagement_service_ip}}:5298"
-rcusermanagement_service_url: "http://{{rcusermanagement_service_ip}}:8001"
-notifications_url: "http://{{notifications_ip}}"
-exam_url: "http://{{exam_ip}}"
-usermanagements_service_url: "http://user-manangement-service:5298"
-hasuranodecomponents_service_url: "http://hasuranodecomponent-service:3000"
 commenthub_service_url: "http://10.0.2.17:8099"
+hasuranodecomponent_service_url: "http://hasuranodecomponent.sunbird-rc.svc.cluster.local:3000"
+usermanagement_service_url: "http://central-usermanagement.sunbird-rc.svc.cluster.local:5298"
+rcusermanagement_service_url: "http://sunbirdrc-usermanagement.sunbird-rc.svc.cluster.local:8001"
+notifications_url: "http://notifications_ip:8000"
+exam_url: "http://examsandadmissions-be.sunbird-rc.svc.cluster.local:8083"
+usermanagements_service_url: "http://central-usermanagement.sunbird-rc.svc.cluster.local:5298"
+hasuranodecomponents_service_url: "http://hasuranodecomponent.sunbird-rc.svc.cluster.local:3000"
 
 premium_consumer_rate_limits:
   - api: createContent
@@ -11822,7 +11822,28 @@ kong_apis:
   - name: opa-checks
     config.required: false
     config.enabled: false
-
+    
+- name: pushBulkUserBGKeycloak
+  uris: "{{ usermanagement_prefix }}/keycloak/pushBulkUserBG"
+  upstream_url: "{{ usermanagement_service_url }}/api/v1/user/keycloak/pushBulkUserBG"
+  strip_uri: true
+  plugins:
+  - name: jwt
+  - name: cors
+  - "{{ statsd_pulgin }}"
+  - name: acl
+    config.whitelist:
+    - userCreate
+  - name: rate-limiting
+    config.policy: local
+    config.hour: "{{ medium_rate_limit_per_hour }}"
+    config.limit_by: credential
+  - name: request-size-limiting
+    config.allowed_payload_size: "{{ small_request_size_limit }}"
+  - name: opa-checks
+    config.required: false
+    config.enabled: false
+    
 - name: privateUserNotificationAll
   uris: "{{ notifications_prefix }}/notification/all"
   upstream_url: "{{ notifications_url }}/api/notification/all"
@@ -11949,26 +11970,26 @@ kong_apis:
     config.required: false
     config.enabled: false
 
-- name: examManagementInstituteCreate
-  uris: "{{ exam_prefix }}/exam/v1/instituteCourseMap/all"
-  upstream_url: "{{ exam_url }}/api/exam/v1/instituteCourseMap/all"
-  strip_uri: true
-  plugins:
-  - name: jwt
-  - name: cors
-  - "{{ statsd_pulgin }}"
-  - name: acl
-    config.whitelist:
-    - userCreate
-  - name: rate-limiting
-    config.policy: local
-    config.hour: "{{ medium_rate_limit_per_hour }}"
-    config.limit_by: credential
-  - name: request-size-limiting
-    config.allowed_payload_size: "{{ small_request_size_limit }}"
-  - name: opa-checks
-    config.required: false
-    config.enabled: false
+#- name: examManagementInstituteCreate
+#  uris: "{{ exam_prefix }}/exam/v1/instituteCourseMap/all"
+#  upstream_url: "{{ exam_url }}/api/exam/v1/instituteCourseMap/all"
+#  strip_uri: true
+#  plugins:
+#  - name: jwt
+#  - name: cors
+#  - "{{ statsd_pulgin }}"
+#  - name: acl
+#    config.whitelist:
+#    - userCreate
+#  - name: rate-limiting
+#    config.policy: local
+#    config.hour: "{{ medium_rate_limit_per_hour }}"
+#    config.limit_by: credential
+#  - name: request-size-limiting
+#    config.allowed_payload_size: "{{ small_request_size_limit }}"
+#  - name: opa-checks
+#    config.required: false
+#    config.enabled: false
     
 - name: privateUserManagementemaildetails
   uris: "{{ usermanagement_prefix }}/emaildetails"
@@ -12500,12 +12521,8 @@ kong_apis:
   upstream_url: "{{ usermanagements_service_url }}/api/v1/user/keycloak/otp"
   strip_uri: true
   plugins:
-  - name: jwt
   - name: cors
   - "{{ statsd_pulgin }}"
-  - name: acl
-    config.whitelist:
-    - userCreate
   - name: rate-limiting
     config.policy: local
     config.hour: "{{ medium_rate_limit_per_hour }}"
@@ -12521,12 +12538,8 @@ kong_apis:
   upstream_url: "{{ usermanagements_service_url }}/api/v1/user/keycloak/login"
   strip_uri: true
   plugins:
-  - name: jwt
   - name: cors
   - "{{ statsd_pulgin }}"
-  - name: acl
-    config.whitelist:
-    - userCreate
   - name: rate-limiting
     config.policy: local
     config.hour: "{{ medium_rate_limit_per_hour }}"
@@ -14483,26 +14496,26 @@ kong_apis:
     config.required: false
     config.enabled: false
 
-- name: privateExamUserLogin
-  uris: "{{ exam_prefix }}/exam/login"
-  upstream_url: "{{ exam_url }}/api/v1/user/login"
-  strip_uri: true
-  plugins:
-  - name: jwt
-  - name: cors
-  - "{{ statsd_pulgin }}"
-  - name: acl
-    config.whitelist:
-    - userCreate
-  - name: rate-limiting
-    config.policy: local
-    config.hour: "{{ medium_rate_limit_per_hour }}"
-    config.limit_by: credential
-  - name: request-size-limiting
-    config.allowed_payload_size: "{{ small_request_size_limit }}"
-  - name: opa-checks
-    config.required: false
-    config.enabled: false
+#- name: privateExamUserLogin
+#  uris: "{{ exam_prefix }}/exam/login"
+#  upstream_url: "{{ exam_url }}/api/v1/user/login"
+#  strip_uri: true
+#  plugins:
+#  - name: jwt
+#  - name: cors
+#  - "{{ statsd_pulgin }}"
+#  - name: acl
+#    config.whitelist:
+#    - userCreate
+#  - name: rate-limiting
+#    config.policy: local
+#    config.hour: "{{ medium_rate_limit_per_hour }}"
+#   config.limit_by: credential
+#  - name: request-size-limiting
+#    config.allowed_payload_size: "{{ small_request_size_limit }}"
+#  - name: opa-checks
+#    config.required: false
+#    config.enabled: false
 
 - name: privateUsergetNOCCertificate
   uris: "{{ hasuranodecomponent_prefix }}/getNOCCertificate"
