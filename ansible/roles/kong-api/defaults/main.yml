@@ -129,6 +129,7 @@ rcusermanagement_prefix: /api/v1
 hasuranodecomponent_prefix: /api/rest
 notifications_prefix: /api
 exam_prefix: /api
+comment_hub_prefix: /api
 
 # Service URLs
 knowledge_mw_service_url: "http://knowledge-mw-service:5000"
@@ -168,6 +169,7 @@ notifications_url: "http://{{notifications_ip}}"
 exam_url: "http://{{exam_ip}}"
 usermanagements_service_url: "http://user-manangement-service:5298"
 hasuranodecomponents_service_url: "http://hasuranodecomponent-service:3000"
+commenthub_service_url: "http://<comment-hub-url>:<port>"
 
 premium_consumer_rate_limits:
   - api: createContent
@@ -15651,6 +15653,171 @@ kong_apis:
     - name: acl
       config.whitelist:
       - userCreate
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+
+- name: commentHubCreationService
+  uris: "{{ comment_hub_prefix }}/v1/comment/update"
+  upstream_url: "{{ commenthub_service_url }}/v1/comment/update"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+      - anonymousAppAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+
+  - name: commentHubCreationService
+  uris: "{{ comment_hub_prefix }}/v1/comment/addFirst"
+  upstream_url: "{{ commenthub_service_url }}/v1/comment/addFirst"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+      - anonymousAppAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+
+  - name: commentHubCreationService
+  uris: "{{ comment_hub_prefix }}/api/v1/comment/addNew"
+  upstream_url: "{{ commenthub_service_url }}/api/v1/comment/addNew"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+      - anonymousAppAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+      
+ - name: commentHubCreationService
+  uris: "{{ comment_hub_prefix }}/api/v1/comment/getAll"
+  upstream_url: "{{ commenthub_service_url }}/api/v1/comment/getAll"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+      - anonymousAppAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+
+- name: commentHubCreationService
+  uris: "{{ comment_hub_prefix }}/api/v1/comment/multipleWorkflows"
+  upstream_url: "{{ commenthub_service_url }}/api/v1/comment/multipleWorkflows"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+      - anonymousAppAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+- name: commentHubCreationService
+  uris: "{{ comment_hub_prefix }}/api/v1/comment/setStatusToResolved"
+  upstream_url: "{{ commenthub_service_url }}/api/v1/comment/setStatusToResolved"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+      - anonymousAppAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+- name: commentHubCreationService
+  uris: "{{ comment_hub_prefix }}/api/v1/comment/*/resolve"
+  upstream_url: "{{ commenthub_service_url }}/api/v1/comment/*/resolve"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+      - anonymousAppAccess
+    - name: rate-limiting
+      config.policy: local
+      config.hour: "{{ medium_rate_limit_per_hour }}"
+      config.limit_by: credential
+    - name: request-size-limiting
+      config.allowed_payload_size: "{{ small_request_size_limit }}"
+    - name: opa-checks
+      config.required: false
+      config.enabled: false
+- name: commentHubCreationService
+  uris: "{{ comment_hub_prefix }}/api/v1/comment/delete/"
+  upstream_url: "{{ commenthub_service_url }}/api/v1/comment/delete/"
+  strip_uri: true
+  plugins:
+    - name: jwt
+    - name: cors
+    - "{{ statsd_pulgin }}"
+    - name: acl
+      config.whitelist:
+      - anonymousAppAccess
     - name: rate-limiting
       config.policy: local
       config.hour: "{{ medium_rate_limit_per_hour }}"
