@@ -169,7 +169,7 @@ notifications_url: "http://{{notifications_ip}}"
 exam_url: "http://{{exam_ip}}"
 usermanagements_service_url: "http://user-manangement-service:5298"
 hasuranodecomponents_service_url: "http://hasuranodecomponent-service:3000"
-commenthub_service_url: "http://<comment-hub-url>:<port>"
+commenthub_service_url: "http://10.0.2.17:8099"
 
 premium_consumer_rate_limits:
   - api: createContent
